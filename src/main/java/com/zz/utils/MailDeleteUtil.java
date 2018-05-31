@@ -27,26 +27,26 @@ import javax.mail.internet.MimeMessage;
 
 import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.MimeUtility;
 
+
+
 /**
  * @Author: zz
- * @Description:  接收邮件
+ * @Description:  删除邮件
  * @Date: 下午 3:39 2018/5/28 0028
  * @Modified By
  */
-public class MailRecieveUtil extends Thread {
+public class MailDeleteUtil extends Thread {
     /**
      * 有一封邮件就需要建立一个ReciveMail对象
      */
-
-
     /**
-     * 判断接收的数量
+     * 判断删除的数量
      */
-    public static int downloadNum=0;
+    public static int deleteNUm=0;
     private MimeMessage mimeMessage = null;
-    private String saveAttachPath = null; //附件下载后的存放目录    
-    private StringBuffer bodytext = new StringBuffer();//存放邮件内容    
-    private String dateformat = "yy-MM-dd HH:mm"; //默认的日前显示格式    
+    private String saveAttachPath = null; //附件下载后的存放目录
+    private StringBuffer bodytext = new StringBuffer();//存放邮件内容
+    private String dateformat = "yy-MM-dd HH:mm"; //默认的日前显示格式
     private String pop3 = null;
     private String smtps =null;
     private String mailusername = null;
@@ -70,23 +70,20 @@ public class MailRecieveUtil extends Thread {
     public void setSubject(String sub){
         this.subject=sub;
     }
-
-
     public void run(){
-        System.out.println("SENDER-" + this.getName() + ":/>" + "邮件正在接收中，请耐心等待");
+        //System.out.println("SENDER-" + this.getName() + ":/>" + "邮件正在放送中，请耐心等待");
         try {
-            recieve();
-            System.out.println("SENDER-" + this.getName() + ":/>" + "邮件已接收完毕！");
+            delete();
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
-            System.out.println("SENDER-" + this.getName() + ":/>" + "邮件接收失败！");
         }
+        //System.out.println("DELETE-" + this.getName() + ":/>" + "指定邮件已删除！");
+    }
 
+    public MailDeleteUtil() {
     }
-    public MailRecieveUtil() {
-    }
-    public MailRecieveUtil(MimeMessage mimeMessage) {
+    public MailDeleteUtil(MimeMessage mimeMessage) {
         this.mimeMessage = mimeMessage;
     }
 
@@ -95,7 +92,7 @@ public class MailRecieveUtil extends Thread {
     }
 
     /**
-     * 获得发件人的地址和姓名   
+     * 获得发件人的地址和姓名
      */
     public String getFrom() throws Exception {
         InternetAddress address[] = (InternetAddress[]) mimeMessage.getFrom();
@@ -110,7 +107,7 @@ public class MailRecieveUtil extends Thread {
     }
 
     /**
-     * 获得邮件的收件人，抄送，和密送的地址和姓名，根据所传递的参数的不同 "to"----收件人 "cc"---抄送人地址 "bcc"---密送人地址   
+     * 获得邮件的收件人，抄送，和密送的地址和姓名，根据所传递的参数的不同 "to"----收件人 "cc"---抄送人地址 "bcc"---密送人地址
      */
     public String getMailAddress(String type) throws Exception {
         String mailaddr = "";
@@ -151,17 +148,12 @@ public class MailRecieveUtil extends Thread {
     }
 
     /**
-     * 获得邮件主题   
+     * 获得邮件主题
      */
     public String getSubject() throws MessagingException {
         String subject = "";
         try {
             subject = MimeUtility.decodeText(mimeMessage.getSubject());
-            //if ( subject.indexOf("=?application/msword?")>=0 ){
-            //subject = subject.replaceAll("application/msword","base64" ); // 将编码方式的信息由UNKNOWN改为GBK
-            //subject = MimeUtility.decodeText( subject ); //再重新解码
-            //}
-            //System.out.println("get sucject :"+subject);
             if (subject == null)
                 subject = "";
         } catch (Exception exce) {}
@@ -169,7 +161,7 @@ public class MailRecieveUtil extends Thread {
     }
 
     /**
-     * 获得邮件发送日期   
+     * 获得邮件发送日期
      */
     public String getSentDate() throws Exception {
         Date sentdate = mimeMessage.getSentDate();
@@ -178,14 +170,14 @@ public class MailRecieveUtil extends Thread {
     }
 
     /**
-     * 获得邮件正文内容   
+     * 获得邮件正文内容
      */
     public String getBodyText() {
         return bodytext.toString();
     }
 
     /**
-     * 解析邮件，把得到的邮件内容保存到一个StringBuffer对象中，解析邮件 主要是根据MimeType类型的不同执行不同的操作，一步一步的解析   
+     * 解析邮件，把得到的邮件内容保存到一个StringBuffer对象中，解析邮件 主要是根据MimeType类型的不同执行不同的操作，一步一步的解析
      */
     public void getMailContent(Part part) throws Exception {
         String contenttype = part.getContentType();
@@ -193,7 +185,7 @@ public class MailRecieveUtil extends Thread {
         boolean conname = false;
         if (nameindex != -1)
             conname = true;
-        //System.out.println("NetOperation=== CONTENTTYPE: " + contenttype);    
+        //System.out.println("NetOperation=== CONTENTTYPE: " + contenttype);
         if (part.isMimeType("text/plain") && !conname) {
             bodytext.append((String) part.getContent());
         } else if (part.isMimeType("text/html") && !conname) {
@@ -210,7 +202,7 @@ public class MailRecieveUtil extends Thread {
     }
 
     /**
-     * 判断此邮件是否需要回执，如果需要回执返回"true",否则返回"false"   
+     * 判断此邮件是否需要回执，如果需要回执返回"true",否则返回"false"
      */
     public boolean getReplySign() throws MessagingException {
         boolean replysign = false;
@@ -221,25 +213,26 @@ public class MailRecieveUtil extends Thread {
         }
         return replysign;
     }
+
     /**
-     * 获得此邮件的Message-ID   
+     * 获得此邮件的Message-ID
      */
     public String getMessageId() throws MessagingException {
         return mimeMessage.getMessageID();
     }
 
     /**
-     * 【判断此邮件是否已读，如果未读返回返回false,反之返回true】   
+     * 【判断此邮件是否已读，如果未读返回返回false,反之返回true】
      */
     public boolean isNew() throws MessagingException {
         boolean isnew = false;
         Flags flags = ((Message) mimeMessage).getFlags();
         Flags.Flag[] flag = flags.getSystemFlags();
-        //System.out.println("NetOperation=== flags's length: " + flag.length);    
+        //System.out.println("NetOperation=== flags's length: " + flag.length);
         for (int i = 0; i < flag.length; i++) {
             if (flag[i] == Flags.Flag.SEEN) {
                 isnew = true;
-                //System.out.println("NetOperation=== seen Message.......");    
+                //System.out.println("NetOperation=== seen Message.......");
                 break;
             }
         }
@@ -247,7 +240,7 @@ public class MailRecieveUtil extends Thread {
     }
 
     /**
-     * 判断此邮件是否包含附件   
+     * 判断此邮件是否包含附件
      */
     public boolean isContainAttach(Part part) throws Exception {
         boolean attachflag = false;
@@ -278,8 +271,9 @@ public class MailRecieveUtil extends Thread {
     }
 
     /**
-     * 【保存附件】    
+     * 【保存附件】
      */
+
     public String saveAttachMent(Part part) throws Exception {
         String fileNames = "";
         String fileName = "";
@@ -309,10 +303,10 @@ public class MailRecieveUtil extends Thread {
                     saveAttachMent(mpart);
                 } else {
                     fileName = mpart.getFileName();
-                    if( ( fileName!=null)&&(fileName.indexOf("=?application/msword") >=0 )){
-                        fileName = fileName.replaceAll("application/msword","gbk" ); // 将编码方式的信息由UNKNOWN改为GBK
-                        fileName = MimeUtility.decodeText( fileName ); //再重新解码
-                        //System.out.println("fileName_2: "+fileName);
+                    if ((fileName != null)
+                            && (fileName.toLowerCase().indexOf("gb") != -1)) {
+                        fileName = MimeUtility.decodeText(fileName);
+                        //System.out.println("filename_4 :"+fileName);
                         saveFile(fileName, mpart.getInputStream());
                     }
                 }
@@ -328,9 +322,8 @@ public class MailRecieveUtil extends Thread {
         }
         return fileNames;
     }
-
     /**
-     * 【设置附件存放路径】    
+     * 【设置附件存放路径】
      */
 
     public void setAttachPath(String attachpath) {
@@ -338,21 +331,21 @@ public class MailRecieveUtil extends Thread {
     }
 
     /**
-     * 【设置日期显示格式】   
+     * 【设置日期显示格式】
      */
     public void setDateFormat(String format) throws Exception {
         this.dateformat = format;
     }
 
     /**
-     * 【获得附件存放路径】   
+     * 【获得附件存放路径】
      */
     public String getAttachPath() {
         return saveAttachPath;
     }
 
     /**
-     * 【真正的保存附件到指定目录里】   
+     * 【真正的保存附件到指定目录里】
      */
 
     private void saveFile(String fileName, InputStream in) throws Exception {
@@ -396,16 +389,17 @@ public class MailRecieveUtil extends Thread {
             bis.close();
         }
     }
-    //接受特定的邮件信息的附件 该信息从tempObj里读取   
+    //接受特定的邮件信息的附件 该信息从tempObj里读取
     @SuppressWarnings("null")
-    private void recieve() throws Exception{
+    private void delete() throws Exception {
+        // TODO Auto-generated method stub
         //设置必要的头信息
-        MailRecieveUtil pmm =new MailRecieveUtil();
+        MailDeleteUtil pmm =null;
         Properties props = System.getProperties();
         //创建一个属性对象
-        //props.setProperty("mail.transport.protocol","smtp");    //设置使用smtp协议 
-        //props.setProperty("mail.smtp.host",this.smtps);  //设置SMTP服务器地址 
-        //props.setProperty("mail.smtp.port",""+2525); //设置SMTP端口号 
+        //props.setProperty("mail.transport.protocol","smtp");    //设置使用smtp协议
+        //props.setProperty("mail.smtp.host",this.smtps);  //设置SMTP服务器地址
+        //props.setProperty("mail.smtp.port",""+2525); //设置SMTP端口号
         //props.setProperty("mail.smtp.auth","true");   //SMTP服务用户认证
         //创建一个过程对象
         props.put("mail.smtp.host", this.smtps);   //此处因根据不同的邮箱设置不同的服务器配置
@@ -418,60 +412,51 @@ public class MailRecieveUtil extends Thread {
         Store store = session.getStore(urln);
         store.connect();
         Folder folder = store.getFolder("INBOX");
-        folder.open(Folder.READ_ONLY);
+        folder.open(Folder.READ_WRITE);
         Message message[] = folder.getMessages();
         //System.out.println("NetOperation=== Messages's length: " + message.length);
-        //开始有根据有选择的接收邮件附件
-
+        //开始有根据有选择的删除邮件
 
         for (int i = 0; i < message.length; i++) {
             //System.out.println("======================");
-            pmm = new MailRecieveUtil((MimeMessage) message[i]);
+            pmm = new MailDeleteUtil((MimeMessage) message[i]);
             //获取邮件主题
             //System.out.println("NetOperation=== Message " + i + " subject: " + pmm.getSubject());
             // 获得邮件内容
             pmm.getMailContent((Part) message[i]);
             //System.out.println("NetOperation=== Message " + i + " bodycontent: \r\n" + pmm.getBodyText());
-            //下载附件 并保存到指定的路径里
+            //删除指定的邮件
+            //if(true){
             if(this.subject.equals(pmm.getSubject())){
-                pmm.setAttachPath(this.saveAttachPath);  //配置下载存放路径
-                //System.out.println("setAttachment"+pmm.getAttachPath());
-                pmm.saveAttachMent((Part) message[i]);
-                this.downloadNum++;
+                //message[i].setFlag(Flags.Flag.DRAFT,true);//删除至垃圾箱
+                message[i].setFlag(Flags.Flag.DELETED,true);
+                this.deleteNUm++;
             }
         }
         folder.close(true);
-        //System.out.println("download Successed !");
+        //System.out.println("DELETED Successed !");
     }
-
     /**
      * @throws Exception
-     * PraseMimeMessage类测试   
+     * PraseMimeMessage类测试
      * @throws
      */
-
-
     @SuppressWarnings("null")
     public static void main(String args[]) throws Exception {
-        //设置必要的头信息
-        MailRecieveUtil pmm =new MailRecieveUtil();
-        pmm.setMailusername("wenzhengzhang@chenhaninfo.com");
-
-        pmm.setMailuserpassword("Chenhan123");
-
-        pmm.setSmtps("smtp.mxhichina.com");
-
-        pmm.setPop3("pop3.mxhichina.com");
-
-        pmm.setSubject("Fw:data-223750413/-19461963261");
+        MailDeleteUtil pmm =new MailDeleteUtil();
+        pmm.setMailusername("filetest4@sina.com");
+        pmm.setMailuserpassword("123456");
+        pmm.setSmtps("smtp.sina.com.cn");
+        pmm.setPop3("pop3.sina.com.cn");
+        pmm.setSubject("This is a local mail test");
         pmm.setAttachPath("E:\\test\\testdown");
         pmm.start();
         pmm.join();
-        //System.out.println("RECIEVER-" + "Main Thread" + ":/>" + "指定邮件已接收完毕！");
+        //System.out.println("DELETE-" + "Main Thread" + ":/>" + "指定邮件已删除！");
     }
 
 }
-	
+
 
 
 
