@@ -10,28 +10,11 @@ import java.util.Random;
  */
 public class RandomUtil {
 
-    public static void main(String[] args) {
-        for(int i = 0 ; i<500 ; i++){
-            int rom = (int) Math.random() * 100;
-            String str = null;
-            if(rom % 2 == 0) {
-                str = getItemID(3);
-            }else {
-                str = getItemID(2);
-            }
-
-            System.out.println(str+".exchange");
-        }
-
-
-    }
-
-
     /** 生成随机数当作getItemID
      * n ： 需要的长度
      * @return
      */
-    private static String getItemID( int n )
+    public static String getItemID( int n )
     {
         String val = "";
         Random random = new Random();
@@ -51,4 +34,15 @@ public class RandomUtil {
         }
         return val;
     }
+
+
+
+
+    public static void main(String[] args) {
+
+
+
+    }
+
+
 }

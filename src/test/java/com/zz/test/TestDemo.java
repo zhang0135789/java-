@@ -19,8 +19,7 @@ public class TestDemo {
 
     @Test
     public void test_str() {
-        String str = DecodeUtil.decodeUnicode("\\u914D\\u7F6E\\u60A8\\u7684\\u76F8\\u5173\\u9009\\u9879");
-        String str2 = DecodeUtil.decodeUnicode("\\u9000\\u51FA");
+        String str2 = DecodeUtil.decodeUnicode("\\u5E10\\u53F7");
         System.out.println(str2);
 
 
