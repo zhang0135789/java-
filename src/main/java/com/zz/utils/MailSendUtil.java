@@ -152,9 +152,9 @@ public class MailSendUtil extends Thread{
     private List<MailPart> partSet;
 
     /**
-     * 不同类型文件对应的{@link MIME} 类型映射。在添加附件
+     * 不同类型文件对应的{@link } 类型映射。在添加附件
      * {@link #addAttachment(String)}
-     * 时，程序会在这个映射中查找对应文件的 {@link MIME}
+     * 时，程序会在这个映射中查找对应文件的 {@link }
      * 类型，如果没有， 则使用
      * {@link #defaultAttachmentContentType}
      * 所定义的类型。
