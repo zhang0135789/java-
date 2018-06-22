@@ -24,10 +24,8 @@ public class CharsetUtil {
     }
 
 
-
     private static final char[] HEX_CHAR = {'0', '1', '2', '3', '4', '5',
             '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
-
     /**
      * 把byte数组转换成16进制字符串
      * @param bytes
@@ -43,7 +41,14 @@ public class CharsetUtil {
         return new String(buf);
     }
 
-
+    /**
+     * byte 转换成  int
+     * @param b
+     * @return
+     */
+    public static int byte2int(byte b) {
+        return b & 0xff;
+    }
 
 
 
