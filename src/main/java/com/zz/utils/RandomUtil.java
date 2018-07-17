@@ -10,7 +10,7 @@ import java.util.Random;
  */
 public class RandomUtil {
 
-    /** 生成随机数当作getItemID
+    /** 生成随机数当
      * n ： 需要的长度
      * @return
      */
@@ -40,7 +40,7 @@ public class RandomUtil {
 
     public static void main(String[] args) {
 
-        String str = getItemID(14);
+        String str = getItemID(10);
         System.out.println(str);
     }
 
