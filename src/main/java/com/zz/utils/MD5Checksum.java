@@ -1,7 +1,9 @@
 package com.zz.utils;
 
 
-import org.apache.log4j.Logger;
+
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.security.MessageDigest;
@@ -9,12 +11,12 @@ import java.security.NoSuchAlgorithmException;
 
 /**
  * @Author: zz
- * @Description:  生成MD%校验码
- * @Date: 上午 10:56 2018/7/20 0020
+ * @Description:  generate MD5check code
+ * @Date:  10:56 2018/7/20 0020
  * @Modified By
  */
 public class MD5Checksum {
-    private static Logger LOGGER = Logger.getLogger(MD5Checksum.class);
+    private static Logger LOGGER = LoggerFactory.getLogger(MD5Checksum.class);
 
     private static byte[] createChecksum(String filename) {
         InputStream fis = null;

@@ -6,13 +6,13 @@ import org.junit.Test;
 /**
  * @Author: zz
  * @Description:
- * @Date: ÏÂÎç 6:04 2018/5/28 0028
+ * @Date:  6:04 2018/5/28 0028
  * @Modified By
  */
 public class TestDemo {
 
     @Test
-    public void test_Î»ÔËËã() {
+    public void test_ä½è¿ç®—() {
         System.out.println(8|4 );
 //        System.out.println("6 & 3 = " + (6 & 3) );
     }

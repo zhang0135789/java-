@@ -9,8 +9,8 @@ import java.io.ObjectOutputStream;
 
 /**
  * @Author: zz
- * @Description:  文件操作
- * @Date: 下午 3:39 2018/5/28 0028
+ * @Description:  fileUtil
+ * @Date:  3:39 2018/5/28 0028
  * @Modified By
  */
 public class FileUtil {

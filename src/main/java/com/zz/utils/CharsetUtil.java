@@ -2,14 +2,14 @@ package com.zz.utils;
 
 /**
  * @Author: zz
- * @Description:  ×Ö·û×ª»»¹¤¾ßÀà
- * @Date: ÉÏÎç 9:40 2018/6/22 0022
+ * @Description:
+ * @Date: ï¿½ï¿½ï¿½ï¿½ 9:40 2018/6/22 0022
  * @Modified By
  */
 public class CharsetUtil {
 
     /**
-     * °ÑbyteÊý×é×ª»¯³É2½øÖÆ×Ö·û´®
+     * ï¿½ï¿½byteï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
      * @param b byte[]
      * @return
      */
@@ -27,14 +27,14 @@ public class CharsetUtil {
     private static final char[] HEX_CHAR = {'0', '1', '2', '3', '4', '5',
             '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
     /**
-     * °ÑbyteÊý×é×ª»»³É16½øÖÆ×Ö·û´®
+     * ï¿½ï¿½byteï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½16ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
      * @param bytes
      * @return
      */
     public static String bytes2Hex(byte[] bytes) {
         char[] buf = new char[bytes.length * 2];
         int index = 0;
-        for(byte b : bytes) { // ÀûÓÃÎ»ÔËËã½øÐÐ×ª»»£¬¿ÉÒÔ¿´×÷·½·¨Ò»µÄ±äÖÖ
+        for(byte b : bytes) { // ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Ä±ï¿½ï¿½ï¿½
             buf[index++] = HEX_CHAR[b >>> 4 & 0xf];
             buf[index++] = HEX_CHAR[b & 0xf];
         }
@@ -42,7 +42,7 @@ public class CharsetUtil {
     }
 
     /**
-     * byte ×ª»»³É  int
+     * byte ×ªï¿½ï¿½ï¿½ï¿½  int
      * @param b
      * @return
      */

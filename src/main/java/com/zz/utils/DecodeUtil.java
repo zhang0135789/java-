@@ -2,15 +2,15 @@ package com.zz.utils;
 
 /**
  * @Author: zz
- * @Description: ½âÎö ±àÂë
- * @Date: ÉÏÎç 10:07 2018/5/29 0029
+ * @Description: DecodeUtil
+ * @Date:  10:07 2018/5/29 0029
  * @Modified By
  */
 public class DecodeUtil {
 
     /**
-     * ½«Unicode½øÐÐ½âÎö
-     * @param dataStr  ´«Èë Unicode
+     * ï¿½ï¿½Unicodeï¿½ï¿½ï¿½Ð½ï¿½ï¿½ï¿½
+     * @param dataStr   Unicode
      * @return
      */
     public static String decodeUnicode(final String dataStr) {
@@ -25,7 +25,7 @@ public class DecodeUtil {
             } else {
                 charStr = dataStr.substring(start + 2, end);
             }
-            char letter = (char) Integer.parseInt(charStr, 16); // 16½øÖÆparseÕûÐÎ×Ö·û´®¡£
+            char letter = (char) Integer.parseInt(charStr, 16); // 16ï¿½ï¿½ï¿½ï¿½parseï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½ï¿½ï¿½
             buffer.append(new Character(letter).toString());
             start = end;
         }

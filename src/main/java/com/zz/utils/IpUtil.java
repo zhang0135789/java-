@@ -1,6 +1,5 @@
 package com.zz.utils;
 
-import com.sun.xml.internal.fastinfoset.tools.FI_DOM_Or_XML_DOM_SAX_SAXEvent;
 
 import java.io.*;
 import java.util.Random;
@@ -8,7 +7,7 @@ import java.util.Random;
 /**
  * @Author: zz
  * @Description:
- * @Date: ÏÂÎç 8:59 2018/7/19 0019
+ * @Date: 8:59 2018/7/19 0019
  * @Modified By
  */
 public class IpUtil {
@@ -26,7 +25,7 @@ public class IpUtil {
 
     }
     public static String getRandomIp(){
-        //ip·¶Î§
+        //ipï¿½ï¿½Î§
         int[][] range = {{607649792,608174079},//36.56.0.0-36.63.255.255
                 {1038614528,1039007743},//61.232.0.0-61.237.255.255
                 {1783627776,1784676351},//106.80.0.0-106.95.255.255
