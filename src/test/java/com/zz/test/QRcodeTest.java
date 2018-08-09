@@ -29,16 +29,18 @@ public class QRcodeTest {
 
 
     public static void main(String[] args) throws IOException {
-        String filePath = "qrcode.png";
+        String filePath = "1.png";
+        String filePath2 = "签名.png";
         File qrFile = new File(filePath);
 
-        BufferedImage image = QRcodeUtil.generateQRcode("李海平");
-        ImageIO.write(image,"PNG",qrFile);
+//        BufferedImage image = QRcodeUtil.generateQRcode("李海平");
+//        ImageIO.write(image,"PNG",qrFile);
 
 
         String s = QRcodeUtil.readQRcode(new FileInputStream(new File(filePath)));
         System.out.println(s);
-
+        String s2 = QRcodeUtil.readQRcode(new FileInputStream(new File(filePath2)));
+        System.out.println(s2);
 
     }
 }

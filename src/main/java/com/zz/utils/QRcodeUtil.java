@@ -29,7 +29,7 @@ public class QRcodeUtil {
      */
     public static String readQRcode(InputStream is) {
         String result = null;
-        QRCodeDecoder decoder =null;
+        QRCodeDecoder decoder;
         BufferedImage image = null;
 
         try {
