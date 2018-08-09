@@ -3,7 +3,7 @@ package com.zz.utils;
 /**
  * @Author: zz
  * @Description:
- * @Date: ���� 9:40 2018/6/22 0022
+ * @Date:  9:40 2018/6/22 0022
  * @Modified By
  */
 public class CharsetUtil {
