@@ -13,7 +13,10 @@ public class TestDemo {
 
     @Test
     public void test_位运算() {
-        System.out.println(8|4 );
+        System.out.println(8|4 );//异或
+        System.out.println(8&4 );//与或
+
+        System.out.println(0>>1);
 //        System.out.println("6 & 3 = " + (6 & 3) );
     }
 
@@ -21,7 +24,6 @@ public class TestDemo {
     public void test_str() {
         String str2 = DecodeUtil.decodeUnicode("\\u5E10\\u53F7");
         System.out.println(str2);
-
 
     }
 
@@ -31,6 +33,11 @@ public class TestDemo {
     }
 
 
+    @Test
+    public void test_() {
+        System.out.println(1 << 4);
 
+
+    }
 
 }

@@ -19,7 +19,7 @@ public class QRcodeTest {
 
     @Test
     public void Test1() throws IOException {
-        String filePath = "qrcode.png";
+        String filePath = "default/666230623579749460.jpg";
         File qrFile = new File(filePath);
 
         BufferedImage image = QRcodeUtil.generateQRcode("李海平");
@@ -29,8 +29,8 @@ public class QRcodeTest {
 
 
     public static void main(String[] args) throws IOException {
-        String filePath = "1.png";
-        String filePath2 = "签名.png";
+        String filePath = "default/666230623579749460.jpg";
+//        String filePath2 = "签名.png";
         File qrFile = new File(filePath);
 
 //        BufferedImage image = QRcodeUtil.generateQRcode("李海平");
@@ -39,8 +39,8 @@ public class QRcodeTest {
 
         String s = QRcodeUtil.readQRcode(new FileInputStream(new File(filePath)));
         System.out.println(s);
-        String s2 = QRcodeUtil.readQRcode(new FileInputStream(new File(filePath2)));
-        System.out.println(s2);
+//        String s2 = QRcodeUtil.readQRcode(new FileInputStream(new File(filePath2)));
+//        System.out.println(s2);
 
     }
 }

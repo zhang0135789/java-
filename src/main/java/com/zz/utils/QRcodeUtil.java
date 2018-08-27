@@ -40,9 +40,12 @@ public class QRcodeUtil {
 
         try {
             decoder = new QRCodeDecoder();
-            result = new String(decoder.decode(new J2SEImage(image)));
+            result = new String(decoder.decode(new J2SEImage(image)) ,"utf-8");
         } catch (DecodingFailedException dfe) {
             log.error("analysis QR code failed~!" ,dfe);
+        } catch (UnsupportedEncodingException e) {
+            e.printStackTrace();
+            log.error("analysis QR code failed~!" ,e);
         }
         return result;
     }
@@ -62,11 +65,11 @@ public class QRcodeUtil {
         qrcode.setQrcodeVersion(7);     // 设置Qrcode包的版本
 
         byte[] d = new byte[0]; // 字符集
-//        try {
-            d = msg.getBytes();
-//        } catch (UnsupportedEncodingException e) {
-//            log.error("get msg bytes failed~!",e);
-//        }
+        try {
+            d = msg.getBytes("utf-8");
+        } catch (UnsupportedEncodingException e) {
+            log.error("get msg bytes failed~!",e);
+        }
         BufferedImage image = new BufferedImage(139, 139, BufferedImage.TYPE_INT_RGB);
         // createGraphics   // 创建图层
         Graphics2D g = image.createGraphics();
