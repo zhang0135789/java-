@@ -9,10 +9,10 @@ import java.util.Random;
 /****
  *
  * Project Name:recruit-helper-util
- * <p>Ëæ»úÊıÉú³É¹¤¾ßÀà,Ö÷Òª°üÀ¨<br>
- *  ÖĞÎÄĞÕÃû£¬ĞÔ±ğ£¬Email£¬ÊÖ»úºÅ£¬×¡Ö·
+ * <p>éšæœºæ•°ç”Ÿæˆå·¥å…·ç±»,ä¸»è¦åŒ…æ‹¬<br>
+ *  ä¸­æ–‡å§“åï¼Œæ€§åˆ«ï¼ŒEmailï¼Œæ‰‹æœºå·ï¼Œä½å€
  * @ClassName: RandomValueUtil
- * @date 2018Äê5ÔÂ23ÈÕ  ÏÂÎç2:11:12
+ * @date 2018å¹´5æœˆ23æ—¥  ä¸‹åˆ2:11:12
  *
  * @author youqiang.xiong
  * @version 1.0
@@ -21,9 +21,9 @@ import java.util.Random;
 public class RandomValueUtil {
 
     public static String base = "abcdefghijklmnopqrstuvwxyz0123456789";
-    private static String firstName="ÕÔÇ®ÀîÀîÀîÀîÀîÀîÀîÀîÀîÀîÀîÀîÀîÕÅÕÅÕÅÕÅÕÅÕÅÕÅÕÅÕÅÕÅÕÅÕÅÕÅÕÅÕÅĞíĞíĞíĞíĞíĞíĞíĞíÕÔÕÔÕÔÕÔÕÔÕÔÕÔÕÔÕÔÕÔÕÔÕÔÕÔÕÔÕÔÁõÁõÁõÁõÁõÁõÁõÁõÁõÁõÁõÁõÁõÁõÁõËïÀîÖÜÎâÖ£Íõ·ë³ÂñÒÎÀ½¯Éòº«ÑîÖìÇØÓÈĞíºÎÂÀÊ©ÕÅ¿×²ÜÑÏ»ª½ğÎºÌÕ½ªÆİĞ»×ŞÓ÷°ØË®ñ¼ÕÂÔÆËÕÅË¸ğŞÉ·¶ÅíÀÉÂ³Î¤²ıÂíÃç·ï»¨·½ÓáÈÎÔ¬ÁøÛº±«Ê·ÌÆ·ÑÁ®á¯Ñ¦À×ºØÄßÌÀëøÒóÂŞ±ÏºÂÚù°²³£ÀÖÓÚÊ±¸µÆ¤±åÆë¿µÎéÓàÔª";
-    private static String girl="Ğã¾êÓ¢»ª»ÛÇÉÃÀÄÈ¾²Êç»İÖé´äÑÅÖ¥ÓñÆ¼ºì¶ğÁá·Ò·¼Ñà²Ê´º¾ÕÀ¼·ï½àÃ·ÁÕËØÔÆÁ«Õæ»·Ñ©ÈÙ°®ÃÃÏ¼ÏãÔÂİºæÂÑŞÈğ·²¼Ñ¼ÎÇíÇÚÕäÕêÀò¹ğæ·Ò¶èµè´æ«çù¾§åûÜçÇïÉºÉ¯½õ÷ìÇàÙ»æÃæ¯ÍñæµèªÓ±Â¶Ñşâùæ¿ÑãİíæıÒÇºÉµ¤ÈØÃ¼¾ıÇÙÈïŞ±İ¼ÃÎá°Ô·æ¼Ü°è¥çüÔÏÈÚÔ°ÒÕÓ½Çä´ÏÀ½´¿Ø¹ÔÃÕÑ±ùË¬çşÜøÓğÏ£ÄşĞÀÆ®ÓıäŞğ¥óŞÈáÖñö°ÄıÏş»¶Ïö·ãÜ¿·Æº®ÒÁÑÇÒË¿É¼§ÊæÓ°ÀóÖ¦Ë¼Àö ";
-    public static String boy="Î°¸ÕÓÂÒã¿¡·åÇ¿¾üÆ½±£¶«ÎÄ»ÔÁ¦Ã÷ÓÀ½¡ÊÀ¹ãÖ¾ÒåĞËÁ¼º£É½ÈÊ²¨Äş¹ó¸£ÉúÁúÔªÈ«¹úÊ¤Ñ§Ïé²Å·¢ÎäĞÂÀûÇå·É±ò¸»Ë³ĞÅ×Ó½ÜÌÎ²ı³É¿µĞÇ¹âÌì´ï°²ÑÒÖĞÃ¯½øÁÖÓĞ¼áºÍ±ë²©³ÏÏÈ¾´ÕğÕñ×³»áË¼ÈººÀĞÄ°î³ĞÀÖÉÜ¹¦ËÉÉÆºñÇìÀÚÃñÓÑÔ£ºÓÕÜ½­³¬ºÆÁÁÕşÇ«ºàÆæ¹ÌÖ®ÂÖº²ÀÊ²®ºêÑÔÈôÃùÅó±óÁº¶°Î¬Æô¿ËÂ×ÏèĞñÅôÔó³¿³½Ê¿ÒÔ½¨¼ÒÖÂÊ÷Ñ×µÂĞĞÊ±Ì©Ê¢ĞÛè¡¾û¹Ú²ßÌÚéªéÅ·çº½ºë";
+    private static String firstName="èµµé’±æææææææææææææå¼ å¼ å¼ å¼ å¼ å¼ å¼ å¼ å¼ å¼ å¼ å¼ å¼ å¼ å¼ è®¸è®¸è®¸è®¸è®¸è®¸è®¸è®¸èµµèµµèµµèµµèµµèµµèµµèµµèµµèµµèµµèµµèµµèµµèµµåˆ˜åˆ˜åˆ˜åˆ˜åˆ˜åˆ˜åˆ˜åˆ˜åˆ˜åˆ˜åˆ˜åˆ˜åˆ˜åˆ˜åˆ˜å­™æå‘¨å´éƒ‘ç‹å†¯é™ˆè¤šå«è’‹æ²ˆéŸ©æ¨æœ±ç§¦å°¤è®¸ä½•å•æ–½å¼ å­”æ›¹ä¸¥åé‡‘é­é™¶å§œæˆšè°¢é‚¹å–»æŸæ°´çª¦ç« äº‘è‹æ½˜è‘›å¥šèŒƒå½­éƒé²éŸ¦æ˜Œé©¬è‹—å‡¤èŠ±æ–¹ä¿ä»»è¢æŸ³é…†é²å²å”è´¹å»‰å²‘è–›é›·è´ºå€ªæ±¤æ»•æ®·ç½—æ¯•éƒé‚¬å®‰å¸¸ä¹äºæ—¶å‚…çš®åé½åº·ä¼ä½™å…ƒ";
+    private static String girl="ç§€å¨Ÿè‹±åæ…§å·§ç¾å¨œé™æ·‘æƒ ç ç¿ é›…èŠç‰èçº¢å¨¥ç²èŠ¬èŠ³ç‡•å½©æ˜¥èŠå…°å‡¤æ´æ¢…ç³ç´ äº‘è²çœŸç¯é›ªè£çˆ±å¦¹éœé¦™æœˆèºåª›è‰³ç‘å‡¡ä½³å˜‰ç¼å‹¤çè´è‰æ¡‚å¨£å¶ç’§ç’å¨…ç¦æ™¶å¦èŒœç§‹çŠèé”¦é»›é’å€©å©·å§£å©‰å¨´ç‘¾é¢–éœ²ç‘¶æ€¡å©µé›è““çº¨ä»ªè·ä¸¹è“‰çœ‰å›ç´è•Šè–‡èæ¢¦å²šè‹‘å©•é¦¨ç‘—ç°éŸµèå›­è‰ºå’å¿èªæ¾œçº¯æ¯“æ‚¦æ˜­å†°çˆ½ç¬èŒ—ç¾½å¸Œå®æ¬£é£˜è‚²æ»¢é¦¥ç­ æŸ”ç«¹éœ­å‡æ™“æ¬¢éœ„æ«èŠ¸è²å¯’ä¼Šäºšå®œå¯å§¬èˆ’å½±è”ææ€ä¸½ ";
+    public static String boy="ä¼Ÿåˆšå‹‡æ¯…ä¿Šå³°å¼ºå†›å¹³ä¿ä¸œæ–‡è¾‰åŠ›æ˜æ°¸å¥ä¸–å¹¿å¿—ä¹‰å…´è‰¯æµ·å±±ä»æ³¢å®è´µç¦ç”Ÿé¾™å…ƒå…¨å›½èƒœå­¦ç¥¥æ‰å‘æ­¦æ–°åˆ©æ¸…é£å½¬å¯Œé¡ºä¿¡å­æ°æ¶›æ˜Œæˆåº·æ˜Ÿå…‰å¤©è¾¾å®‰å²©ä¸­èŒ‚è¿›æ—æœ‰åšå’Œå½ªåšè¯šå…ˆæ•¬éœ‡æŒ¯å£®ä¼šæ€ç¾¤è±ªå¿ƒé‚¦æ‰¿ä¹ç»åŠŸæ¾å–„åšåº†ç£Šæ°‘å‹è£•æ²³å“²æ±Ÿè¶…æµ©äº®æ”¿è°¦äº¨å¥‡å›ºä¹‹è½®ç¿°æœ—ä¼¯å®è¨€è‹¥é¸£æœ‹æ–Œæ¢æ ‹ç»´å¯å…‹ä¼¦ç¿”æ—­é¹æ³½æ™¨è¾°å£«ä»¥å»ºå®¶è‡´æ ‘ç‚å¾·è¡Œæ—¶æ³°ç››é›„ç›é’§å† ç­–è…¾æ¥ æ¦•é£èˆªå¼˜";
     public static final String[] email_suffix="@gmail.com,@yahoo.com,@msn.com,@hotmail.com,@aol.com,@ask.com,@live.com,@qq.com,@0355.net,@163.com,@163.net,@263.net,@3721.net,@yeah.net,@googlemail.com,@126.com,@sina.com,@sohu.com,@yahoo.com.cn".split(",");
 
     public static int getNum(int start,int end) {
@@ -33,16 +33,16 @@ public class RandomValueUtil {
     /***
      *
      * Project Name: recruit-helper-util
-     * <p>Ëæ»úÉú³ÉEmail
+     * <p>éšæœºç”ŸæˆEmail
      *
      * @author youqiang.xiong
-     * @date 2018Äê5ÔÂ23ÈÕ  ÏÂÎç2:13:06
+     * @date 2018å¹´5æœˆ23æ—¥  ä¸‹åˆ2:13:06
      * @version v1.0
      * @since
      * @param lMin
-     *         ×îĞ¡³¤¶È
+     *         æœ€å°é•¿åº¦
      * @param lMax
-     *         ×î´ó³¤¶È
+     *         æœ€å¤§é•¿åº¦
      * @return
      */
     public static String getEmail(int lMin,int lMax) {
@@ -61,10 +61,10 @@ public class RandomValueUtil {
     /***
      *
      * Project Name: recruit-helper-util
-     * <p>Ëæ»úÉú³ÉÊÖ»úºÅÂë
+     * <p>éšæœºç”Ÿæˆæ‰‹æœºå·ç 
      *
      * @author youqiang.xiong
-     * @date 2018Äê5ÔÂ23ÈÕ  ÏÂÎç2:14:17
+     * @date 2018å¹´5æœˆ23æ—¥  ä¸‹åˆ2:14:17
      * @version v1.0
      * @since
      * @return
@@ -80,10 +80,10 @@ public class RandomValueUtil {
     /***
      *
      * Project Name: recruit-helper-util
-     * <p>Ëæ»úÉú³É8Î»µç»°ºÅÂë
+     * <p>éšæœºç”Ÿæˆ8ä½ç”µè¯å·ç 
      *
      * @author youqiang.xiong
-     * @date 2018Äê5ÔÂ23ÈÕ  ÏÂÎç2:15:31
+     * @date 2018å¹´5æœˆ23æ—¥  ä¸‹åˆ2:15:31
      * @version v1.0
      * @since
      * @return
@@ -99,17 +99,17 @@ public class RandomValueUtil {
 
 
     /**
-     * ·µ»ØÖĞÎÄĞÕÃû
+     * è¿”å›ä¸­æ–‡å§“å
      */
     public static String name_sex = "";
 
     /***
      *
      * Project Name: recruit-helper-util
-     * <p>·µ»ØÖĞÎÄĞÕÃû
+     * <p>è¿”å›ä¸­æ–‡å§“å
      *
      * @author youqiang.xiong
-     * @date 2018Äê5ÔÂ23ÈÕ  ÏÂÎç2:16:16
+     * @date 2018å¹´5æœˆ23æ—¥  ä¸‹åˆ2:16:16
      * @version v1.0
      * @since
      * @return
@@ -123,9 +123,9 @@ public class RandomValueUtil {
         if (sex == 0) {
             str = girl;
             length = girl.length();
-            name_sex = "Å®";
+            name_sex = "å¥³";
         } else {
-            name_sex = "ÄĞ";
+            name_sex = "ç”·";
         }
         index = getNum(0, length - 1);
         String second = str.substring(index, index + 1);
@@ -164,8 +164,8 @@ public class RandomValueUtil {
     }
 
 
-        /** Éú³ÉËæ»úÊıµ±
-         * n £º ĞèÒªµÄ³¤¶È
+        /** ç”Ÿæˆéšæœºæ•°å½“
+         * n ï¼š éœ€è¦çš„é•¿åº¦
          * @return
                  */
         public static String getItemID( int n )
@@ -175,13 +175,13 @@ public class RandomValueUtil {
             for ( int i = 0; i < n; i++ ) {
                 String str = random.nextInt( 2 ) % 2 == 0 ? "num" : "char";
                 if ( "char".equalsIgnoreCase( str ) )
-                { // ²úÉú×ÖÄ¸
+                { // äº§ç”Ÿå­—æ¯
                     int nextInt = random.nextInt( 2 ) % 2 == 0 ? 65 : 97;
                     // System.out.println(nextInt + "!!!!"); 1,0,1,1,1,0,0
                     val += (char) ( nextInt + random.nextInt( 26 ) );
                 }
                 else if ( "num".equalsIgnoreCase( str ) )
-                { // ²úÉúÊı×Ö
+                { // äº§ç”Ÿæ•°å­—
                     val += String.valueOf( random.nextInt( 10 ) );
                 }
             }
@@ -192,12 +192,12 @@ public class RandomValueUtil {
     public static String getStringRandom(int length) {
                  String val = "";
                 Random random = new Random();
-               //²ÎÊılength£¬±íÊ¾Éú³É¼¸Î»Ëæ»úÊı
+               //å‚æ•°lengthï¼Œè¡¨ç¤ºç”Ÿæˆå‡ ä½éšæœºæ•°
                 for(int i = 0; i < length; i++) {
                         String charOrNum = random.nextInt(2) % 2 == 0 ? "char" : "num";
-                        //Êä³ö×ÖÄ¸»¹ÊÇÊı×Ö
+                        //è¾“å‡ºå­—æ¯è¿˜æ˜¯æ•°å­—
                         if( "char".equalsIgnoreCase(charOrNum) ) {
-                                //Êä³öÊÇ´óĞ´×ÖÄ¸»¹ÊÇĞ¡Ğ´×ÖÄ¸
+                                //è¾“å‡ºæ˜¯å¤§å†™å­—æ¯è¿˜æ˜¯å°å†™å­—æ¯
                                 int temp = random.nextInt(2) % 2 == 0 ? 65 : 97;
                                 val += (char)(random.nextInt(26) + temp);
                             } else if( "num".equalsIgnoreCase(charOrNum) ) {

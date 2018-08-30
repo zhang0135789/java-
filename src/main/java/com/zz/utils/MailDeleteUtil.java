@@ -31,29 +31,29 @@ import com.sun.xml.internal.messaging.saaj.packaging.mime.internet.MimeUtility;
 
 /**
  * @Author: zz
- * @Description:  É¾³ıÓÊ¼ş
- * @Date: ÏÂÎç 3:39 2018/5/28 0028
+ * @Description:  åˆ é™¤é‚®ä»¶
+ * @Date: ä¸‹åˆ 3:39 2018/5/28 0028
  * @Modified By
  */
 public class MailDeleteUtil extends Thread {
     /**
-     * ÓĞÒ»·âÓÊ¼ş¾ÍĞèÒª½¨Á¢Ò»¸öReciveMail¶ÔÏó
+     * æœ‰ä¸€å°é‚®ä»¶å°±éœ€è¦å»ºç«‹ä¸€ä¸ªReciveMailå¯¹è±¡
      */
     /**
-     * ÅĞ¶ÏÉ¾³ıµÄÊıÁ¿
+     * åˆ¤æ–­åˆ é™¤çš„æ•°é‡
      */
     public static int deleteNUm=0;
     private MimeMessage mimeMessage = null;
-    private String saveAttachPath = null; //¸½¼şÏÂÔØºóµÄ´æ·ÅÄ¿Â¼
-    private StringBuffer bodytext = new StringBuffer();//´æ·ÅÓÊ¼şÄÚÈİ
-    private String dateformat = "yy-MM-dd HH:mm"; //Ä¬ÈÏµÄÈÕÇ°ÏÔÊ¾¸ñÊ½
+    private String saveAttachPath = null; //é™„ä»¶ä¸‹è½½åçš„å­˜æ”¾ç›®å½•
+    private StringBuffer bodytext = new StringBuffer();//å­˜æ”¾é‚®ä»¶å†…å®¹
+    private String dateformat = "yy-MM-dd HH:mm"; //é»˜è®¤çš„æ—¥å‰æ˜¾ç¤ºæ ¼å¼
     private String pop3 = null;
     private String smtps =null;
     private String mailusername = null;
     private String mailuserpassword = null;
     private String subject = null;
     /**
-     * Ïß³Ìµ÷ÓÃÇ°ÅäÖÃ¸÷¸ö±äÁ¿
+     * çº¿ç¨‹è°ƒç”¨å‰é…ç½®å„ä¸ªå˜é‡
      */
     public void setPop3(String pop){
         this.pop3=pop;
@@ -71,14 +71,14 @@ public class MailDeleteUtil extends Thread {
         this.subject=sub;
     }
     public void run(){
-        //System.out.println("SENDER-" + this.getName() + ":/>" + "ÓÊ¼şÕıÔÚ·ÅËÍÖĞ£¬ÇëÄÍĞÄµÈ´ı");
+        //System.out.println("SENDER-" + this.getName() + ":/>" + "é‚®ä»¶æ­£åœ¨æ”¾é€ä¸­ï¼Œè¯·è€å¿ƒç­‰å¾…");
         try {
             delete();
         } catch (Exception e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
         }
-        //System.out.println("DELETE-" + this.getName() + ":/>" + "Ö¸¶¨ÓÊ¼şÒÑÉ¾³ı£¡");
+        //System.out.println("DELETE-" + this.getName() + ":/>" + "æŒ‡å®šé‚®ä»¶å·²åˆ é™¤ï¼");
     }
 
     public MailDeleteUtil() {
@@ -92,7 +92,7 @@ public class MailDeleteUtil extends Thread {
     }
 
     /**
-     * »ñµÃ·¢¼şÈËµÄµØÖ·ºÍĞÕÃû
+     * è·å¾—å‘ä»¶äººçš„åœ°å€å’Œå§“å
      */
     public String getFrom() throws Exception {
         InternetAddress address[] = (InternetAddress[]) mimeMessage.getFrom();
@@ -107,7 +107,7 @@ public class MailDeleteUtil extends Thread {
     }
 
     /**
-     * »ñµÃÓÊ¼şµÄÊÕ¼şÈË£¬³­ËÍ£¬ºÍÃÜËÍµÄµØÖ·ºÍĞÕÃû£¬¸ù¾İËù´«µİµÄ²ÎÊıµÄ²»Í¬ "to"----ÊÕ¼şÈË "cc"---³­ËÍÈËµØÖ· "bcc"---ÃÜËÍÈËµØÖ·
+     * è·å¾—é‚®ä»¶çš„æ”¶ä»¶äººï¼ŒæŠ„é€ï¼Œå’Œå¯†é€çš„åœ°å€å’Œå§“åï¼Œæ ¹æ®æ‰€ä¼ é€’çš„å‚æ•°çš„ä¸åŒ "to"----æ”¶ä»¶äºº "cc"---æŠ„é€äººåœ°å€ "bcc"---å¯†é€äººåœ°å€
      */
     public String getMailAddress(String type) throws Exception {
         String mailaddr = "";
@@ -148,7 +148,7 @@ public class MailDeleteUtil extends Thread {
     }
 
     /**
-     * »ñµÃÓÊ¼şÖ÷Ìâ
+     * è·å¾—é‚®ä»¶ä¸»é¢˜
      */
     public String getSubject() throws MessagingException {
         String subject = "";
@@ -161,7 +161,7 @@ public class MailDeleteUtil extends Thread {
     }
 
     /**
-     * »ñµÃÓÊ¼ş·¢ËÍÈÕÆÚ
+     * è·å¾—é‚®ä»¶å‘é€æ—¥æœŸ
      */
     public String getSentDate() throws Exception {
         Date sentdate = mimeMessage.getSentDate();
@@ -170,14 +170,14 @@ public class MailDeleteUtil extends Thread {
     }
 
     /**
-     * »ñµÃÓÊ¼şÕıÎÄÄÚÈİ
+     * è·å¾—é‚®ä»¶æ­£æ–‡å†…å®¹
      */
     public String getBodyText() {
         return bodytext.toString();
     }
 
     /**
-     * ½âÎöÓÊ¼ş£¬°ÑµÃµ½µÄÓÊ¼şÄÚÈİ±£´æµ½Ò»¸öStringBuffer¶ÔÏóÖĞ£¬½âÎöÓÊ¼ş Ö÷ÒªÊÇ¸ù¾İMimeTypeÀàĞÍµÄ²»Í¬Ö´ĞĞ²»Í¬µÄ²Ù×÷£¬Ò»²½Ò»²½µÄ½âÎö
+     * è§£æé‚®ä»¶ï¼ŒæŠŠå¾—åˆ°çš„é‚®ä»¶å†…å®¹ä¿å­˜åˆ°ä¸€ä¸ªStringBufferå¯¹è±¡ä¸­ï¼Œè§£æé‚®ä»¶ ä¸»è¦æ˜¯æ ¹æ®MimeTypeç±»å‹çš„ä¸åŒæ‰§è¡Œä¸åŒçš„æ“ä½œï¼Œä¸€æ­¥ä¸€æ­¥çš„è§£æ
      */
     public void getMailContent(Part part) throws Exception {
         String contenttype = part.getContentType();
@@ -202,7 +202,7 @@ public class MailDeleteUtil extends Thread {
     }
 
     /**
-     * ÅĞ¶Ï´ËÓÊ¼şÊÇ·ñĞèÒª»ØÖ´£¬Èç¹ûĞèÒª»ØÖ´·µ»Ø"true",·ñÔò·µ»Ø"false"
+     * åˆ¤æ–­æ­¤é‚®ä»¶æ˜¯å¦éœ€è¦å›æ‰§ï¼Œå¦‚æœéœ€è¦å›æ‰§è¿”å›"true",å¦åˆ™è¿”å›"false"
      */
     public boolean getReplySign() throws MessagingException {
         boolean replysign = false;
@@ -215,14 +215,14 @@ public class MailDeleteUtil extends Thread {
     }
 
     /**
-     * »ñµÃ´ËÓÊ¼şµÄMessage-ID
+     * è·å¾—æ­¤é‚®ä»¶çš„Message-ID
      */
     public String getMessageId() throws MessagingException {
         return mimeMessage.getMessageID();
     }
 
     /**
-     * ¡¾ÅĞ¶Ï´ËÓÊ¼şÊÇ·ñÒÑ¶Á£¬Èç¹ûÎ´¶Á·µ»Ø·µ»Øfalse,·´Ö®·µ»Øtrue¡¿
+     * ã€åˆ¤æ–­æ­¤é‚®ä»¶æ˜¯å¦å·²è¯»ï¼Œå¦‚æœæœªè¯»è¿”å›è¿”å›false,åä¹‹è¿”å›trueã€‘
      */
     public boolean isNew() throws MessagingException {
         boolean isnew = false;
@@ -240,7 +240,7 @@ public class MailDeleteUtil extends Thread {
     }
 
     /**
-     * ÅĞ¶Ï´ËÓÊ¼şÊÇ·ñ°üº¬¸½¼ş
+     * åˆ¤æ–­æ­¤é‚®ä»¶æ˜¯å¦åŒ…å«é™„ä»¶
      */
     public boolean isContainAttach(Part part) throws Exception {
         boolean attachflag = false;
@@ -271,7 +271,7 @@ public class MailDeleteUtil extends Thread {
     }
 
     /**
-     * ¡¾±£´æ¸½¼ş¡¿
+     * ã€ä¿å­˜é™„ä»¶ã€‘
      */
 
     public String saveAttachMent(Part part) throws Exception {
@@ -285,10 +285,10 @@ public class MailDeleteUtil extends Thread {
                 if ((disposition != null) && ((disposition.equals(Part.ATTACHMENT)) || (disposition.equals(Part.INLINE)))) {
                     fileName = mpart.getFileName();
                     //System.out.println("fileName_1: "+fileName);
-                    //±àÂë×ª»»GBb2312»òÕßGBKµÄÇé¿ö
+                    //ç¼–ç è½¬æ¢GBb2312æˆ–è€…GBKçš„æƒ…å†µ
                     if ( fileName.indexOf("=?application/msword") >=0 ){
-                        fileName = fileName.replaceAll("application/msword","gbk" ); // ½«±àÂë·½Ê½µÄĞÅÏ¢ÓÉUNKNOWN¸ÄÎªGBK
-                        fileName = MimeUtility.decodeText( fileName ); //ÔÙÖØĞÂ½âÂë
+                        fileName = fileName.replaceAll("application/msword","gbk" ); // å°†ç¼–ç æ–¹å¼çš„ä¿¡æ¯ç”±UNKNOWNæ”¹ä¸ºGBK
+                        fileName = MimeUtility.decodeText( fileName ); //å†é‡æ–°è§£ç 
                         //System.out.println("fileName_2: "+fileName);
                     }
 
@@ -323,7 +323,7 @@ public class MailDeleteUtil extends Thread {
         return fileNames;
     }
     /**
-     * ¡¾ÉèÖÃ¸½¼ş´æ·ÅÂ·¾¶¡¿
+     * ã€è®¾ç½®é™„ä»¶å­˜æ”¾è·¯å¾„ã€‘
      */
 
     public void setAttachPath(String attachpath) {
@@ -331,21 +331,21 @@ public class MailDeleteUtil extends Thread {
     }
 
     /**
-     * ¡¾ÉèÖÃÈÕÆÚÏÔÊ¾¸ñÊ½¡¿
+     * ã€è®¾ç½®æ—¥æœŸæ˜¾ç¤ºæ ¼å¼ã€‘
      */
     public void setDateFormat(String format) throws Exception {
         this.dateformat = format;
     }
 
     /**
-     * ¡¾»ñµÃ¸½¼ş´æ·ÅÂ·¾¶¡¿
+     * ã€è·å¾—é™„ä»¶å­˜æ”¾è·¯å¾„ã€‘
      */
     public String getAttachPath() {
         return saveAttachPath;
     }
 
     /**
-     * ¡¾ÕæÕıµÄ±£´æ¸½¼şµ½Ö¸¶¨Ä¿Â¼Àï¡¿
+     * ã€çœŸæ­£çš„ä¿å­˜é™„ä»¶åˆ°æŒ‡å®šç›®å½•é‡Œã€‘
      */
 
     private void saveFile(String fileName, InputStream in) throws Exception {
@@ -383,52 +383,52 @@ public class MailDeleteUtil extends Thread {
             }
         } catch (Exception exception) {
             exception.printStackTrace();
-            throw new Exception("ÎÄ¼ş±£´æÊ§°Ü!");
+            throw new Exception("æ–‡ä»¶ä¿å­˜å¤±è´¥!");
         } finally {
             bos.close();
             bis.close();
         }
     }
-    //½ÓÊÜÌØ¶¨µÄÓÊ¼şĞÅÏ¢µÄ¸½¼ş ¸ÃĞÅÏ¢´ÓtempObjÀï¶ÁÈ¡
+    //æ¥å—ç‰¹å®šçš„é‚®ä»¶ä¿¡æ¯çš„é™„ä»¶ è¯¥ä¿¡æ¯ä»tempObjé‡Œè¯»å–
     @SuppressWarnings("null")
     private void delete() throws Exception {
         // TODO Auto-generated method stub
-        //ÉèÖÃ±ØÒªµÄÍ·ĞÅÏ¢
+        //è®¾ç½®å¿…è¦çš„å¤´ä¿¡æ¯
         MailDeleteUtil pmm =null;
         Properties props = System.getProperties();
-        //´´½¨Ò»¸öÊôĞÔ¶ÔÏó
-        //props.setProperty("mail.transport.protocol","smtp");    //ÉèÖÃÊ¹ÓÃsmtpĞ­Òé
-        //props.setProperty("mail.smtp.host",this.smtps);  //ÉèÖÃSMTP·şÎñÆ÷µØÖ·
-        //props.setProperty("mail.smtp.port",""+2525); //ÉèÖÃSMTP¶Ë¿ÚºÅ
-        //props.setProperty("mail.smtp.auth","true");   //SMTP·şÎñÓÃ»§ÈÏÖ¤
-        //´´½¨Ò»¸ö¹ı³Ì¶ÔÏó
-        props.put("mail.smtp.host", this.smtps);   //´Ë´¦Òò¸ù¾İ²»Í¬µÄÓÊÏäÉèÖÃ²»Í¬µÄ·şÎñÆ÷ÅäÖÃ
-        props.put("mail.smtp.port",""+25); //ÉèÖÃSMTP¶Ë¿ÚºÅ
-        //props.put("mail.smtp.port",""+2525); //ÉèÖÃSMTP¶Ë¿ÚºÅ ±¾µØ²âÊÔÓÃ
+        //åˆ›å»ºä¸€ä¸ªå±æ€§å¯¹è±¡
+        //props.setProperty("mail.transport.protocol","smtp");    //è®¾ç½®ä½¿ç”¨smtpåè®®
+        //props.setProperty("mail.smtp.host",this.smtps);  //è®¾ç½®SMTPæœåŠ¡å™¨åœ°å€
+        //props.setProperty("mail.smtp.port",""+2525); //è®¾ç½®SMTPç«¯å£å·
+        //props.setProperty("mail.smtp.auth","true");   //SMTPæœåŠ¡ç”¨æˆ·è®¤è¯
+        //åˆ›å»ºä¸€ä¸ªè¿‡ç¨‹å¯¹è±¡
+        props.put("mail.smtp.host", this.smtps);   //æ­¤å¤„å› æ ¹æ®ä¸åŒçš„é‚®ç®±è®¾ç½®ä¸åŒçš„æœåŠ¡å™¨é…ç½®
+        props.put("mail.smtp.port",""+25); //è®¾ç½®SMTPç«¯å£å·
+        //props.put("mail.smtp.port",""+2525); //è®¾ç½®SMTPç«¯å£å· æœ¬åœ°æµ‹è¯•ç”¨
         props.put("mail.smtp.auth", "true");
         Session session = Session.getDefaultInstance(props, null);
         URLName urln = new URLName("pop3", this.pop3, 110, null,this.mailusername,this.mailuserpassword);
-        //URLName urln = new URLName("pop3", this.pop3, 1101, null, this.mailusername, this.mailuserpassword);//±¾µØ²âÊÔpop3¶Ë¿Ú110110
+        //URLName urln = new URLName("pop3", this.pop3, 1101, null, this.mailusername, this.mailuserpassword);//æœ¬åœ°æµ‹è¯•pop3ç«¯å£110110
         Store store = session.getStore(urln);
         store.connect();
         Folder folder = store.getFolder("INBOX");
         folder.open(Folder.READ_WRITE);
         Message message[] = folder.getMessages();
         //System.out.println("NetOperation=== Messages's length: " + message.length);
-        //¿ªÊ¼ÓĞ¸ù¾İÓĞÑ¡ÔñµÄÉ¾³ıÓÊ¼ş
+        //å¼€å§‹æœ‰æ ¹æ®æœ‰é€‰æ‹©çš„åˆ é™¤é‚®ä»¶
 
         for (int i = 0; i < message.length; i++) {
             //System.out.println("======================");
             pmm = new MailDeleteUtil((MimeMessage) message[i]);
-            //»ñÈ¡ÓÊ¼şÖ÷Ìâ
+            //è·å–é‚®ä»¶ä¸»é¢˜
             //System.out.println("NetOperation=== Message " + i + " subject: " + pmm.getSubject());
-            // »ñµÃÓÊ¼şÄÚÈİ
+            // è·å¾—é‚®ä»¶å†…å®¹
             pmm.getMailContent((Part) message[i]);
             //System.out.println("NetOperation=== Message " + i + " bodycontent: \r\n" + pmm.getBodyText());
-            //É¾³ıÖ¸¶¨µÄÓÊ¼ş
+            //åˆ é™¤æŒ‡å®šçš„é‚®ä»¶
             //if(true){
             if(this.subject.equals(pmm.getSubject())){
-                //message[i].setFlag(Flags.Flag.DRAFT,true);//É¾³ıÖÁÀ¬»øÏä
+                //message[i].setFlag(Flags.Flag.DRAFT,true);//åˆ é™¤è‡³åƒåœ¾ç®±
                 message[i].setFlag(Flags.Flag.DELETED,true);
                 this.deleteNUm++;
             }
@@ -438,7 +438,7 @@ public class MailDeleteUtil extends Thread {
     }
     /**
      * @throws Exception
-     * PraseMimeMessageÀà²âÊÔ
+     * PraseMimeMessageç±»æµ‹è¯•
      * @throws
      */
     @SuppressWarnings("null")
@@ -452,7 +452,7 @@ public class MailDeleteUtil extends Thread {
         pmm.setAttachPath("E:\\test\\testdown");
         pmm.start();
         pmm.join();
-        //System.out.println("DELETE-" + "Main Thread" + ":/>" + "Ö¸¶¨ÓÊ¼şÒÑÉ¾³ı£¡");
+        //System.out.println("DELETE-" + "Main Thread" + ":/>" + "æŒ‡å®šé‚®ä»¶å·²åˆ é™¤ï¼");
     }
 
 }

@@ -25,139 +25,139 @@ import sun.misc.BASE64Encoder;
 
 /**
  * @Author: zz
- * @Description:   ¸ÃÀàÊ¹ÓÃSocketÁ¬½Óµ½ÓÊ¼ş·şÎñÆ÷
- *                 ²¢ÊµÏÖÁËÏòÖ¸¶¨ÓÊÏä·¢ËÍÓÊ¼ş¼°¸½¼şµÄ¹¦ÄÜ¡£
- * @Date: ÏÂÎç 3:39 2018/5/28 0028
+ * @Description:   è¯¥ç±»ä½¿ç”¨Socketè¿æ¥åˆ°é‚®ä»¶æœåŠ¡å™¨
+ *                 å¹¶å®ç°äº†å‘æŒ‡å®šé‚®ç®±å‘é€é‚®ä»¶åŠé™„ä»¶çš„åŠŸèƒ½ã€‚
+ * @Date: ä¸‹åˆ 3:39 2018/5/28 0028
  * @Modified By
  */
 public class MailSendUtil extends Thread{
     public void run(){
-        //System.out.println("SENDER-" + this.getName() + ":/>" + "ÓÊ¼şÕıÔÚ·ÅËÍÖĞ£¬ÇëÄÍĞÄµÈ´ı");
+        //System.out.println("SENDER-" + this.getName() + ":/>" + "é‚®ä»¶æ­£åœ¨æ”¾é€ä¸­ï¼Œè¯·è€å¿ƒç­‰å¾…");
         send();
-        //System.out.println("SENDER-" + this.getName() + ":/>" + "ÓÊ¼şÒÑ·¢ËÍÍê±Ï£¡");
+        //System.out.println("SENDER-" + this.getName() + ":/>" + "é‚®ä»¶å·²å‘é€å®Œæ¯•ï¼");
     }
     /**
-     * ÅĞ¶ÏÉÏ´«µÄÊıÁ¿
+     * åˆ¤æ–­ä¸Šä¼ çš„æ•°é‡
      */
     public static int uploadNum=0;
     /**
-     * »»ĞĞ·û
+     * æ¢è¡Œç¬¦
      */
     private static final String LINE_END = "\r\n";
 
     /**
-     * ÖµÎª¡°true¡±Êä³ö¸ß¶ÈĞÅÏ¢£¨°üÀ¨·şÎñÆ÷ÏìÓ¦ĞÅÏ¢£©£¬ÖµÎª¡°
-     * false¡±Ôò²»Êä³öµ÷ÊÔĞÅÏ¢¡£
+     * å€¼ä¸ºâ€œtrueâ€è¾“å‡ºé«˜åº¦ä¿¡æ¯ï¼ˆåŒ…æ‹¬æœåŠ¡å™¨å“åº”ä¿¡æ¯ï¼‰ï¼Œå€¼ä¸ºâ€œ
+     * falseâ€åˆ™ä¸è¾“å‡ºè°ƒè¯•ä¿¡æ¯ã€‚
      */
     private boolean isDebug = true;
 
     /**
-     * ÖµÎª¡°true¡±ÔòÔÚ·¢ËÍÓÊ¼ş{@link MailSendUtil#send()}
-     * ¹ı³ÌÖĞ»á¶ÁÈ¡·şÎñÆ÷¶Ë·µ»ØµÄÏûÏ¢£¬
-     * ²¢ÔÚÓÊ¼ş·¢ËÍÍê±Ïºó½«ÕâĞ©ÏûÏ¢·µ»Ø¸øÓÃ»§¡£
+     * å€¼ä¸ºâ€œtrueâ€åˆ™åœ¨å‘é€é‚®ä»¶{@link MailSendUtil#send()}
+     * è¿‡ç¨‹ä¸­ä¼šè¯»å–æœåŠ¡å™¨ç«¯è¿”å›çš„æ¶ˆæ¯ï¼Œ
+     * å¹¶åœ¨é‚®ä»¶å‘é€å®Œæ¯•åå°†è¿™äº›æ¶ˆæ¯è¿”å›ç»™ç”¨æˆ·ã€‚
      */
     private boolean isAllowReadSocketInfo = true;
 
     /**
-     * ÓÊ¼ş·şÎñÆ÷µØÖ·
+     * é‚®ä»¶æœåŠ¡å™¨åœ°å€
      */
     private String host;
 
     /**
-     * ·¢¼şÈËÓÊÏäµØÖ·
+     * å‘ä»¶äººé‚®ç®±åœ°å€
      */
     private String from;
 
     /**
-     * ÊÕ¼şÈËÓÊÏäµØÖ·
+     * æ”¶ä»¶äººé‚®ç®±åœ°å€
      */
     private List<String> to;
 
     /**
-     * ³­ËÍµØÖ·
+     * æŠ„é€åœ°å€
      */
     private List<String> cc;
 
     /**
-     * °µËÍµØÖ·
+     * æš—é€åœ°å€
      */
     private List<String> bcc;
 
     /**
-     * ÓÊ¼şÖ÷Ìâ
+     * é‚®ä»¶ä¸»é¢˜
      */
     private String subject;
 
     /**
-     * ÓÃ»§Ãû
+     * ç”¨æˆ·å
      */
     private String user;
 
     /**
-     * ÃÜÂë
+     * å¯†ç 
      */
     private String password;
 
     /**
-     * MIMEÓÊ¼şÀàĞÍ
+     * MIMEé‚®ä»¶ç±»å‹
      */
     private String contentType;
 
     /**
-     * ÓÃÀ´°ó¶¨¶à¸öÓÊ¼şµ¥Ôª{@link #partSet}
-     * µÄ·Ö¸ô±êÊ¶£¬ÎÒÃÇ¿ÉÒÔ½«ÓÊ¼şµÄÕıÎÄ¼°Ã¿Ò»¸ö¸½¼ş¶¼¿´×÷ÊÇÒ»¸öÓÊ¼şµ¥Ôª
-     * ¡£
+     * ç”¨æ¥ç»‘å®šå¤šä¸ªé‚®ä»¶å•å…ƒ{@link #partSet}
+     * çš„åˆ†éš”æ ‡è¯†ï¼Œæˆ‘ä»¬å¯ä»¥å°†é‚®ä»¶çš„æ­£æ–‡åŠæ¯ä¸€ä¸ªé™„ä»¶éƒ½çœ‹ä½œæ˜¯ä¸€ä¸ªé‚®ä»¶å•å…ƒ
+     * ã€‚
      */
     private String boundary;
 
     /**
-     * ÓÊ¼şµ¥Ôª·Ö¸ô±êÊ¶·û£¬¸ÃÊôĞÔ½«ÓÃÀ´ÔÚÓÊ¼şÖĞ×÷Îª·Ö¸î¸÷¸öÓÊ¼şµ¥ÔªµÄ±êÊ¶
-     * ¡£
+     * é‚®ä»¶å•å…ƒåˆ†éš”æ ‡è¯†ç¬¦ï¼Œè¯¥å±æ€§å°†ç”¨æ¥åœ¨é‚®ä»¶ä¸­ä½œä¸ºåˆ†å‰²å„ä¸ªé‚®ä»¶å•å…ƒçš„æ ‡è¯†
+     * ã€‚
      */
     private String boundaryNextPart;
 
     /**
-     * ´«ÊäÓÊ¼şËù²ÉÓÃµÄ±àÂë
+     * ä¼ è¾“é‚®ä»¶æ‰€é‡‡ç”¨çš„ç¼–ç 
      */
     private String contentTransferEncoding;
 
     /**
-     * ÉèÖÃÓÊ¼şÕıÎÄËùÓÃµÄ×Ö·û¼¯
+     * è®¾ç½®é‚®ä»¶æ­£æ–‡æ‰€ç”¨çš„å­—ç¬¦é›†
      */
     private String charset;
 
     /**
-     * ÄÚÈİÃèÊö
+     * å†…å®¹æè¿°
      */
     private String contentDisposition;
 
     /**
-     * ÓÊ¼şÕıÎÄ
+     * é‚®ä»¶æ­£æ–‡
      */
     private String content;
 
     /**
-     * ·¢ËÍÓÊ¼şÈÕÆÚµÄÏÔÊ¾¸ñÊ½
+     * å‘é€é‚®ä»¶æ—¥æœŸçš„æ˜¾ç¤ºæ ¼å¼
      */
     private String simpleDatePattern;
 
     /**
-     * ¸½¼şµÄÄ¬ÈÏMIMEÀàĞÍ
+     * é™„ä»¶çš„é»˜è®¤MIMEç±»å‹
      */
     private String defaultAttachmentContentType;
 
     /**
-     * ÓÊ¼şµ¥ÔªµÄ¼¯ºÏ£¬ÓÃÀ´´æ·ÅÕıÎÄµ¥ÔªºÍËùÓĞµÄ¸½¼şµ¥Ôª¡£
+     * é‚®ä»¶å•å…ƒçš„é›†åˆï¼Œç”¨æ¥å­˜æ”¾æ­£æ–‡å•å…ƒå’Œæ‰€æœ‰çš„é™„ä»¶å•å…ƒã€‚
      */
     private List<MailPart> partSet;
 
     /**
-     * ²»Í¬ÀàĞÍÎÄ¼ş¶ÔÓ¦µÄ{@link } ÀàĞÍÓ³Éä¡£ÔÚÌí¼Ó¸½¼ş
+     * ä¸åŒç±»å‹æ–‡ä»¶å¯¹åº”çš„{@link } ç±»å‹æ˜ å°„ã€‚åœ¨æ·»åŠ é™„ä»¶
      * {@link #addAttachment(String)}
-     * Ê±£¬³ÌĞò»áÔÚÕâ¸öÓ³ÉäÖĞ²éÕÒ¶ÔÓ¦ÎÄ¼şµÄ {@link }
-     * ÀàĞÍ£¬Èç¹ûÃ»ÓĞ£¬ ÔòÊ¹ÓÃ
+     * æ—¶ï¼Œç¨‹åºä¼šåœ¨è¿™ä¸ªæ˜ å°„ä¸­æŸ¥æ‰¾å¯¹åº”æ–‡ä»¶çš„ {@link }
+     * ç±»å‹ï¼Œå¦‚æœæ²¡æœ‰ï¼Œ åˆ™ä½¿ç”¨
      * {@link #defaultAttachmentContentType}
-     * Ëù¶¨ÒåµÄÀàĞÍ¡£
+     * æ‰€å®šä¹‰çš„ç±»å‹ã€‚
      */
     private static Map<String, String> contentTypeMap;
 
@@ -177,13 +177,13 @@ public class MailSendUtil extends Thread{
     }
 
     /**
-     * ¸ÃÀàÓÃÀ´ÊµÀı»¯Ò»¸öÕıÎÄµ¥Ôª»ò¸½¼şµ¥Ôª¶ÔÏó£¬Ëû¼Ì³ĞÁË
+     * è¯¥ç±»ç”¨æ¥å®ä¾‹åŒ–ä¸€ä¸ªæ­£æ–‡å•å…ƒæˆ–é™„ä»¶å•å…ƒå¯¹è±¡ï¼Œä»–ç»§æ‰¿äº†
      * {@link MailSendUtil}
-     * £¬ÔÚÕâÀïÖÆ×÷Õâ¸ö×ÓÀàÖ÷ÒªÊÇÎªÁËÇø±ğÓÊ¼şµ¥Ôª¶ÔÏóºÍÓÊ¼ş·şÎñ¶ÔÏó
-     * £¬Ê¹³ÌĞòÒ×¶ÁÒ»Ğ©¡£ ÕâĞ©ÓÊ¼şµ¥ÔªÈ«²¿»á·Åµ½partSet
-     * ÖĞ£¬ÔÚ·¢ËÍÓÊ¼ş {@link #send()}Ê±, ³ÌĞò»áµ÷ÓÃ
+     * ï¼Œåœ¨è¿™é‡Œåˆ¶ä½œè¿™ä¸ªå­ç±»ä¸»è¦æ˜¯ä¸ºäº†åŒºåˆ«é‚®ä»¶å•å…ƒå¯¹è±¡å’Œé‚®ä»¶æœåŠ¡å¯¹è±¡
+     * ï¼Œä½¿ç¨‹åºæ˜“è¯»ä¸€äº›ã€‚ è¿™äº›é‚®ä»¶å•å…ƒå…¨éƒ¨ä¼šæ”¾åˆ°partSet
+     * ä¸­ï¼Œåœ¨å‘é€é‚®ä»¶ {@link #send()}æ—¶, ç¨‹åºä¼šè°ƒç”¨
      * {@link #getAllParts()}
-     * ·½·¨½«ËùÓĞµÄµ¥ÔªºÏ²¢³ÉÒ»¸ö·ûºÏMIME¸ñÊ½µÄ×Ö·û´®¡£
+     * æ–¹æ³•å°†æ‰€æœ‰çš„å•å…ƒåˆå¹¶æˆä¸€ä¸ªç¬¦åˆMIMEæ ¼å¼çš„å­—ç¬¦ä¸²ã€‚
      *
      * @author Zhong Lizhi
      */
@@ -192,7 +192,7 @@ public class MailSendUtil extends Thread{
         }
     }
     /**
-     * Ä¬ÈÏ¹¹Ôìº¯Êı
+     * é»˜è®¤æ„é€ å‡½æ•°
      */
     public MailSendUtil() {
         defaultAttachmentContentType = "application/octet-stream";
@@ -209,14 +209,14 @@ public class MailSendUtil extends Thread{
     }
 
     /**
-     * ¸ù¾İÖ¸¶¨µÄÍêÕûÎÄ¼şÃûÔÚ
+     * æ ¹æ®æŒ‡å®šçš„å®Œæ•´æ–‡ä»¶ååœ¨
      * {@link #contentTypeMap}
-     * ÖĞ²éÕÒÆäÏàÓ¦µÄMIMEÀàĞÍ£¬ Èç¹ûÃ»ÕÒµ½£¬Ôò·µ»Ø
+     * ä¸­æŸ¥æ‰¾å…¶ç›¸åº”çš„MIMEç±»å‹ï¼Œ å¦‚æœæ²¡æ‰¾åˆ°ï¼Œåˆ™è¿”å›
      * {@link #defaultAttachmentContentType}
-     * ËùÖ¸¶¨µÄÄ¬ÈÏÀàĞÍ¡£
+     * æ‰€æŒ‡å®šçš„é»˜è®¤ç±»å‹ã€‚
      *
-     * @param fileName ÎÄ¼şÃû
-     * @return ·µ»ØÎÄ¼ş¶ÔÓ¦µÄMIMEÀàĞÍ¡£
+     * @param fileName æ–‡ä»¶å
+     * @return è¿”å›æ–‡ä»¶å¯¹åº”çš„MIMEç±»å‹ã€‚
      */
     private String getPartContentType(String fileName) {
         String ret = null;
@@ -235,13 +235,13 @@ public class MailSendUtil extends Thread{
     }
 
     /**
-     * ½«¸ø¶¨×Ö·û´®×ª»»Îªbase64±àÂëµÄ×Ö·û´®
+     * å°†ç»™å®šå­—ç¬¦ä¸²è½¬æ¢ä¸ºbase64ç¼–ç çš„å­—ç¬¦ä¸²
      *
      * @param str
-     *            ĞèÒª×ªÂëµÄ×Ö·û´®
+     *            éœ€è¦è½¬ç çš„å­—ç¬¦ä¸²
      * @param charset
-     *            Ô­×Ö·û´®µÄ±àÂë¸ñÊ½
-     * @return base64±àÂë¸ñÊ½µÄ×Ö·û
+     *            åŸå­—ç¬¦ä¸²çš„ç¼–ç æ ¼å¼
+     * @return base64ç¼–ç æ ¼å¼çš„å­—ç¬¦
      */
     private String toBase64(String str, String charset) {
         if (null != str) {
@@ -255,31 +255,31 @@ public class MailSendUtil extends Thread{
     }
 
     /**
-     * ½«Ö¸¶¨µÄ×Ö½ÚÊı×é×ª»»Îªbase64¸ñÊ½µÄ×Ö·û´®
+     * å°†æŒ‡å®šçš„å­—èŠ‚æ•°ç»„è½¬æ¢ä¸ºbase64æ ¼å¼çš„å­—ç¬¦ä¸²
      *
      * @param bs
-     *            ĞèÒª×ªÂëµÄ×Ö½ÚÊı×é
-     * @return base64±àÂë¸ñÊ½µÄ×Ö·û
+     *            éœ€è¦è½¬ç çš„å­—èŠ‚æ•°ç»„
+     * @return base64ç¼–ç æ ¼å¼çš„å­—ç¬¦
      */
     private String toBase64(byte[] bs) {
         return new BASE64Encoder().encode(bs);
     }
 
     /**
-     * ½«¸ø¶¨×Ö·û´®×ª»»Îªbase64±àÂëµÄ×Ö·û´®
+     * å°†ç»™å®šå­—ç¬¦ä¸²è½¬æ¢ä¸ºbase64ç¼–ç çš„å­—ç¬¦ä¸²
      *
      * @param str
-     *            ĞèÒª×ªÂëµÄ×Ö·û´®
-     * @return base64±àÂë¸ñÊ½µÄ×Ö·û
+     *            éœ€è¦è½¬ç çš„å­—ç¬¦ä¸²
+     * @return base64ç¼–ç æ ¼å¼çš„å­—ç¬¦
      */
     private String toBase64(String str) {
         return toBase64(str, Charset.defaultCharset().name());
     }
 
     /**
-     * ½«ËùÓĞµÄÓÊ¼şµ¥Ôª°´ÕÕ±ê×¼µÄMIME¸ñÊ½ÒªÇóºÏ²¢¡£
+     * å°†æ‰€æœ‰çš„é‚®ä»¶å•å…ƒæŒ‰ç…§æ ‡å‡†çš„MIMEæ ¼å¼è¦æ±‚åˆå¹¶ã€‚
      *
-     * @return ·µ»ØÒ»¸öËùÓĞµ¥ÔªºÏ²¢ºóµÄ×Ö·û´®¡£
+     * @return è¿”å›ä¸€ä¸ªæ‰€æœ‰å•å…ƒåˆå¹¶åçš„å­—ç¬¦ä¸²ã€‚
      */
     private String getAllParts() {
         int partCount = partSet.size();
@@ -316,7 +316,7 @@ public class MailSendUtil extends Thread{
     }
 
     /**
-     * Ìí¼ÓÓÊ¼şÕıÎÄµ¥Ôª
+     * æ·»åŠ é‚®ä»¶æ­£æ–‡å•å…ƒ
      */
     private void addContent() {
         if (null != content) {
@@ -350,21 +350,21 @@ public class MailSendUtil extends Thread{
     }
 
     /**
-     * Ìí¼ÓÒ»¸ö¸½¼şµ¥Ôª
+     * æ·»åŠ ä¸€ä¸ªé™„ä»¶å•å…ƒ
      *
      * @param filePath
-     *            ÎÄ¼şÂ·¾¶
+     *            æ–‡ä»¶è·¯å¾„
      */
     public void addAttachment(String filePath) {
         addAttachment(filePath, null);
     }
     /**
-     * Ìí¼ÓÒ»¸ö¸½¼şµ¥Ôª
+     * æ·»åŠ ä¸€ä¸ªé™„ä»¶å•å…ƒ
      *
      * @param fileName
-     *            ÎÄ¼şÃû³Æ
+     *            æ–‡ä»¶åç§°
      *@param attachmentStream
-     *            ÎÄ¼şÁ÷
+     *            æ–‡ä»¶æµ
      */
     public void addAttachmentStream(String fileName,InputStream attachmentStream) {
         addAttachment(fileName,attachmentStream, null);
@@ -385,12 +385,12 @@ public class MailSendUtil extends Thread{
 
 
     /**
-     * Ìí¼ÓÒ»¸ö¸½¼şµ¥Ôª
+     * æ·»åŠ ä¸€ä¸ªé™„ä»¶å•å…ƒ
      *
      * @param filePath
-     *            ÎÄ¼şÂ·¾¶
+     *            æ–‡ä»¶è·¯å¾„
      * @param charset
-     *            ÎÄ¼ş±àÂë¸ñÊ½
+     *            æ–‡ä»¶ç¼–ç æ ¼å¼
      */
     public void addAttachment(String filePath, String charset) {
         if (null != filePath && filePath.length() > 0) {
@@ -399,21 +399,21 @@ public class MailSendUtil extends Thread{
                 addAttachment(file.getName(), new FileInputStream(file),
                         charset);
             } catch (FileNotFoundException e) {
-                //System.out.println("´íÎó£º" + e.getMessage());
+                //System.out.println("é”™è¯¯ï¼š" + e.getMessage());
                 System.exit(1);
             }
         }
     }
 
     /**
-     * Ìí¼ÓÒ»¸ö¸½¼şµ¥Ôª
+     * æ·»åŠ ä¸€ä¸ªé™„ä»¶å•å…ƒ
      *
      * @param fileName
-     *            ÎÄ¼şÃû
+     *            æ–‡ä»¶å
      * @param attachmentStream
-     *            ÎÄ¼şÁ÷
+     *            æ–‡ä»¶æµ
      * @param charset
-     *            ÎÄ¼ş±àÂë¸ñÊ½
+     *            æ–‡ä»¶ç¼–ç æ ¼å¼
      */
     public void addAttachment(String fileName, InputStream attachmentStream,
                               String charset) {
@@ -468,23 +468,23 @@ public class MailSendUtil extends Thread{
     }
 
     /**
-     * ·¢ËÍÓÊ¼ş
+     * å‘é€é‚®ä»¶
      *
-     * @return ÓÊ¼ş·şÎñÆ÷·´»ØµÄĞÅÏ¢
+     * @return é‚®ä»¶æœåŠ¡å™¨åå›çš„ä¿¡æ¯
      */
     public String send() {
 
-        // ¶ÔÏóÉêÃ÷
-        // µ±ÓÊ¼ş·¢ËÍÍê±Ïºó£¬ÒÔÏÂÈı¸ö¶ÔÏó£¨Socket¡¢
+        // å¯¹è±¡ç”³æ˜
+        // å½“é‚®ä»¶å‘é€å®Œæ¯•åï¼Œä»¥ä¸‹ä¸‰ä¸ªå¯¹è±¡ï¼ˆSocketã€
         // PrintWriter,
-        // BufferedReader£©ĞèÒª¹Ø±Õ¡£
+        // BufferedReaderï¼‰éœ€è¦å…³é—­ã€‚
         Socket socket = null;
         PrintWriter pw = null;
         BufferedReader br = null;
 
         try {
             socket = new Socket(host, 25);
-            //socket = new Socket(host, 2525); //±¾µØ²âÊÔÓÃ¶Ë¿Ú
+            //socket = new Socket(host, 2525); //æœ¬åœ°æµ‹è¯•ç”¨ç«¯å£
             pw = new PrintWriter(socket.getOutputStream());
             br = new BufferedReader(new InputStreamReader(socket
                     .getInputStream()));
@@ -492,34 +492,34 @@ public class MailSendUtil extends Thread{
             StringBuilder infoBuilder = new StringBuilder(
                     "\nServer info: \n------------\n");
 
-            // Óë·şÎñÆ÷½¨Á¢Á¬½Ó
-            pw.write("HELO ".concat(host).concat(LINE_END)); // Á¬½Óµ½ÓÊ¼ş·şÎñ
+            // ä¸æœåŠ¡å™¨å»ºç«‹è¿æ¥
+            pw.write("HELO ".concat(host).concat(LINE_END)); // è¿æ¥åˆ°é‚®ä»¶æœåŠ¡
             this.join(1000);
             if (!readResponse(pw, br, infoBuilder, "220"))
                 return infoBuilder.toString();
 
-            pw.write("AUTH LOGIN".concat(LINE_END)); // µÇÂ¼
+            pw.write("AUTH LOGIN".concat(LINE_END)); // ç™»å½•
             this.join(1000);
             if (!readResponse(pw, br, infoBuilder, "250"))
                 return infoBuilder.toString();
 
-            pw.write(toBase64(user).concat(LINE_END)); // ÊäÈëÓÃ»§Ãû
+            pw.write(toBase64(user).concat(LINE_END)); // è¾“å…¥ç”¨æˆ·å
             this.join(1000);
             if (!readResponse(pw, br, infoBuilder, "334"))
                 return infoBuilder.toString();
 
-            pw.write(toBase64(password).concat(LINE_END)); // ÊäÈëÃÜÂë
+            pw.write(toBase64(password).concat(LINE_END)); // è¾“å…¥å¯†ç 
             this.join(1000);
             if (!readResponse(pw, br, infoBuilder, "334"))
                 return infoBuilder.toString();
 
-            pw.write("MAIL FROM:<" + from + ">" + LINE_END); // ·¢¼şÈËÓÊÏäµØÖ·
+            pw.write("MAIL FROM:<" + from + ">" + LINE_END); // å‘ä»¶äººé‚®ç®±åœ°å€
             this.join(1000);
             if (!readResponse(pw, br, infoBuilder, "235"))
                 return infoBuilder.toString();
 
             List<String> recipientList = getrecipient();
-            // ÊÕ¼şÓÊÏäµØÖ·
+            // æ”¶ä»¶é‚®ç®±åœ°å€
             for (int i = 0; i < recipientList.size(); i++) {
                 pw.write("RCPT TO:<" + recipientList.get(i) + ">" + LINE_END);
                 this.join(1000);
@@ -529,45 +529,45 @@ public class MailSendUtil extends Thread{
             // //System.out.println(
             // getAllSendAddress());
 
-            pw.write("DATA" + LINE_END); // ¿ªÊ¼ÊäÈëÓÊ¼ş
+            pw.write("DATA" + LINE_END); // å¼€å§‹è¾“å…¥é‚®ä»¶
             this.join(1000);
             if (!readResponse(pw, br, infoBuilder, "250"))
                 return infoBuilder.toString();
 
             flush(pw);
 
-            // ÉèÖÃÓÊ¼şÍ·ĞÅÏ¢
+            // è®¾ç½®é‚®ä»¶å¤´ä¿¡æ¯
             StringBuffer sbf = new StringBuffer("From: <" + from + ">"
-                    + LINE_END); // ·¢¼şÈË
-            sbf.append("To: " + listToMailString(to) + LINE_END);// ÊÕ¼şÈË
-            sbf.append("Cc: " + listToMailString(cc) + LINE_END);// ÊÕ¼şÈË
-            sbf.append("Bcc: " + listToMailString(bcc) + LINE_END);// ÊÕ¼şÈË
-            sbf.append("Subject: " + subject + LINE_END);// ÓÊ¼şÖ÷Ìâ
+                    + LINE_END); // å‘ä»¶äºº
+            sbf.append("To: " + listToMailString(to) + LINE_END);// æ”¶ä»¶äºº
+            sbf.append("Cc: " + listToMailString(cc) + LINE_END);// æ”¶ä»¶äºº
+            sbf.append("Bcc: " + listToMailString(bcc) + LINE_END);// æ”¶ä»¶äºº
+            sbf.append("Subject: " + subject + LINE_END);// é‚®ä»¶ä¸»é¢˜
             SimpleDateFormat sdf = new SimpleDateFormat(simpleDatePattern);
             sbf.append("Date: ").append(sdf.format(new Date()));
-            sbf.append(LINE_END); // ·¢ËÍÊ±¼ä
+            sbf.append(LINE_END); // å‘é€æ—¶é—´
             sbf.append("Content-Type: ");
             sbf.append(contentType);
             sbf.append(";");
             sbf.append("boundary=\"");
-            sbf.append(boundary).append("\""); // ÓÊ¼şÀàĞÍÉèÖÃ
+            sbf.append(boundary).append("\""); // é‚®ä»¶ç±»å‹è®¾ç½®
             sbf.append(LINE_END);
             sbf.append("This is a multi-part message in MIME format.");
             sbf.append(LINE_END);
 
-            // Ìí¼ÓÓÊ¼şÕıÎÄµ¥Ôª
+            // æ·»åŠ é‚®ä»¶æ­£æ–‡å•å…ƒ
             addContent();
 
-            // ºÏ²¢ËùÓĞµ¥Ôª£¬ÕıÎÄºÍ¸½¼ş¡£
+            // åˆå¹¶æ‰€æœ‰å•å…ƒï¼Œæ­£æ–‡å’Œé™„ä»¶ã€‚
             sbf.append(getAllParts());
 
-            // ·¢ËÍ
+            // å‘é€
             sbf.append(LINE_END).append(".").append(LINE_END);
             pw.write(sbf.toString());
             readResponse(pw, br, infoBuilder, "354");
             flush(pw);
 
-            // QUITÍË³ö
+            // QUITé€€å‡º
             pw.write("QUIT" + LINE_END);
             this.join(1000);
             if (!readResponse(pw, br, infoBuilder, "250"))
@@ -579,7 +579,7 @@ public class MailSendUtil extends Thread{
             e.printStackTrace();
             return "Exception:>" + e.getMessage();
         } finally {
-            // ÊÍ·Å×ÊÔ´
+            // é‡Šæ”¾èµ„æº
             try {
                 if (null != socket)
                     socket.close();
@@ -601,10 +601,10 @@ public class MailSendUtil extends Thread{
     }
 
     /**
-     * ½«SMTPÃüÁî·¢ËÍµ½ÓÊ¼ş·şÎñÆ÷
+     * å°†SMTPå‘½ä»¤å‘é€åˆ°é‚®ä»¶æœåŠ¡å™¨
      *
      * @param pw
-     *            ÓÊ¼ş·şÎñÆ÷ÊäÈëÁ÷
+     *            é‚®ä»¶æœåŠ¡å™¨è¾“å…¥æµ
      */
     private void flush(PrintWriter pw) {
         if (!isAllowReadSocketInfo) {
@@ -613,14 +613,14 @@ public class MailSendUtil extends Thread{
     }
 
     /**
-     * ¶ÁÈ¡ÓÊ¼ş·şÎñÆ÷µÄÏìÓ¦ĞÅÏ¢
+     * è¯»å–é‚®ä»¶æœåŠ¡å™¨çš„å“åº”ä¿¡æ¯
      *
      * @param pw
-     *            ÓÊ¼ş·şÎñÆ÷ÊäÈëÁ÷
+     *            é‚®ä»¶æœåŠ¡å™¨è¾“å…¥æµ
      * @param br
-     *            ÓÊ¼ş·şÎñÆ÷Êä³öÁ÷
+     *            é‚®ä»¶æœåŠ¡å™¨è¾“å‡ºæµ
      * @param infoBuilder
-     *            ÓÃÀ´´æ·Å·şÎñÆ÷ÏìÓ¦ĞÅÏ¢µÄ×Ö·û´®»º³å
+     *            ç”¨æ¥å­˜æ”¾æœåŠ¡å™¨å“åº”ä¿¡æ¯çš„å­—ç¬¦ä¸²ç¼“å†²
      * @param msgCode
      * @return
      * @throws IOException
@@ -773,41 +773,41 @@ public class MailSendUtil extends Thread{
     public void setAllowReadSocketInfo(boolean isAllowReadSocketInfo) {
         this.isAllowReadSocketInfo = isAllowReadSocketInfo;
     }
-    //¶ÁÈ¡ÓÃ»§µÄprofileÖĞµÄÓÊÏäĞÅÏ¢À´½øĞĞÉèÖÃ pop3 ¡£¡£¡£
-    //¶ÁÈ¡ÓÃ»§ÉÏ´«µÄÎÄ¼şµÄĞÅÏ¢tempObj
+    //è¯»å–ç”¨æˆ·çš„profileä¸­çš„é‚®ç®±ä¿¡æ¯æ¥è¿›è¡Œè®¾ç½® pop3 ã€‚ã€‚ã€‚
+    //è¯»å–ç”¨æˆ·ä¸Šä¼ çš„æ–‡ä»¶çš„ä¿¡æ¯tempObj
 
     public static void main(String[] args) throws InterruptedException {
         MailSendUtil mail1 = new MailSendUtil();
         mail1.setName("mail1 Thread");
-        mail1.setHost("smtp.mxhichina.com"); // ÓÊ¼ş·şÎñÆ÷µØÖ·
-        mail1.setFrom("wenzhengzhang@chenhaninfo.com"); // ·¢¼şÈËÓÊÏä
-        mail1.addTo("wenzhengzhang@chenhaninfo.com"); // ÊÕ¼şÈËÓÊÏä
-        mail1.setUser("wenzhengzhang@chenhaninfo.com"); // ÓÃ»§Ãû
-        mail1.setPassword("Chenhan123"); // ÃÜÂë
-        //´Ë´¦ÖØµãÌí¼ÓËùĞèÒªµÄĞÅÏ¢
-        mail1.setSubject("This is test 1"); // ÓÊ¼şÖ÷Ìâ
-        mail1.setContent("Test 1"); // ÓÊ¼şÕıÎÄ
-//	    mail1.addAttachment( "E:\\test\\1_test.txt","application/msword");// Ìí¼Ó¸½¼ş
+        mail1.setHost("smtp.mxhichina.com"); // é‚®ä»¶æœåŠ¡å™¨åœ°å€
+        mail1.setFrom("wenzhengzhang@chenhaninfo.com"); // å‘ä»¶äººé‚®ç®±
+        mail1.addTo("wenzhengzhang@chenhaninfo.com"); // æ”¶ä»¶äººé‚®ç®±
+        mail1.setUser("wenzhengzhang@chenhaninfo.com"); // ç”¨æˆ·å
+        mail1.setPassword("Chenhan123"); // å¯†ç 
+        //æ­¤å¤„é‡ç‚¹æ·»åŠ æ‰€éœ€è¦çš„ä¿¡æ¯
+        mail1.setSubject("This is test 1"); // é‚®ä»¶ä¸»é¢˜
+        mail1.setContent("Test 1"); // é‚®ä»¶æ­£æ–‡
+//	    mail1.addAttachment( "E:\\test\\1_test.txt","application/msword");// æ·»åŠ é™„ä»¶
 
 //	    MailSend mail2 = new MailSend();
 //    	mail2.setName("mail2");
-//	    mail2.setHost("smtp.163.com"); // ÓÊ¼ş·şÎñÆ÷µØÖ·
-//	    mail2.setFrom("myfiletest@163.com"); // ·¢¼şÈËÓÊÏä
-//	    mail2.addTo("myfiletest@163.com"); // ÊÕ¼şÈËÓÊÏä
-//	    mail2.setUser("myfiletest@163.com"); // ÓÃ»§Ãû
-//	    mail2.setPassword("123456"); // ÃÜÂë
-//	    //´Ë´¦ÖØµãÌí¼ÓËùĞèÒªµÄĞÅÏ¢
-//	    mail2.setSubject("This is a Test Mail!!"); // ÓÊ¼şÖ÷Ìâ
-//	    mail2.setContent("ÕâÊÇÒ»¸ö²âÊÔ£¬Çë²»Òª»Ø¸´£¡"); // ÓÊ¼şÕıÎÄ
-//	    mail2.addAttachment( "E:\\test\\2_test.txt","application/msword");// Ìí¼Ó¸½¼ş
+//	    mail2.setHost("smtp.163.com"); // é‚®ä»¶æœåŠ¡å™¨åœ°å€
+//	    mail2.setFrom("myfiletest@163.com"); // å‘ä»¶äººé‚®ç®±
+//	    mail2.addTo("myfiletest@163.com"); // æ”¶ä»¶äººé‚®ç®±
+//	    mail2.setUser("myfiletest@163.com"); // ç”¨æˆ·å
+//	    mail2.setPassword("123456"); // å¯†ç 
+//	    //æ­¤å¤„é‡ç‚¹æ·»åŠ æ‰€éœ€è¦çš„ä¿¡æ¯
+//	    mail2.setSubject("This is a Test Mail!!"); // é‚®ä»¶ä¸»é¢˜
+//	    mail2.setContent("è¿™æ˜¯ä¸€ä¸ªæµ‹è¯•ï¼Œè¯·ä¸è¦å›å¤ï¼"); // é‚®ä»¶æ­£æ–‡
+//	    mail2.addAttachment( "E:\\test\\2_test.txt","application/msword");// æ·»åŠ é™„ä»¶
         System.out.println("sending....");
         mail1.start();
 
-        //ÁíÖ÷Ïß³ÌµÈ´ıÉÏÊöÏß³ÌÖ´ĞĞ½áÊøºóÔËĞĞ
+        //å¦ä¸»çº¿ç¨‹ç­‰å¾…ä¸Šè¿°çº¿ç¨‹æ‰§è¡Œç»“æŸåè¿è¡Œ
         mail1.join();
 
 
-        //System.out.println("SENDER-" + "Main Thread" + ":/>" + "ËùÓĞÓÊ¼şÒÑ·¢ËÍÍê±Ï£¡");
+        //System.out.println("SENDER-" + "Main Thread" + ":/>" + "æ‰€æœ‰é‚®ä»¶å·²å‘é€å®Œæ¯•ï¼");
 
     }
 
@@ -816,20 +816,20 @@ public class MailSendUtil extends Thread{
 //
 //    	MailSend mail1 = new MailSend();
 //    	mail1.setName("mail1 Thread");
-//	    mail1.setHost("smtp.sina.com"); // ÓÊ¼ş·şÎñÆ÷µØÖ·
-//	    mail1.setFrom("filetest4@sina.com"); // ·¢¼şÈËÓÊÏä
-//	    mail1.addTo("filetest4@sina.com"); // ÊÕ¼şÈËÓÊÏä
-//	    mail1.setUser("filetest4@sina.com"); // ÃÜÂë
-//	    mail1.setPassword("123456"); // ÃÜÂë
-//	    mail1.setSubject("This is a local mail test"); // ÓÊ¼şÖ÷Ìâ
-//	    mail1.setContent("This is a local mail test"); // ÓÊ¼şÕıÎÄ
-//	    mail1.addAttachment( "E:\\test\\»úÃÜĞÅÏ¢.txt","application/msword");// Ìí¼Ó¸½¼ş
+//	    mail1.setHost("smtp.sina.com"); // é‚®ä»¶æœåŠ¡å™¨åœ°å€
+//	    mail1.setFrom("filetest4@sina.com"); // å‘ä»¶äººé‚®ç®±
+//	    mail1.addTo("filetest4@sina.com"); // æ”¶ä»¶äººé‚®ç®±
+//	    mail1.setUser("filetest4@sina.com"); // å¯†ç 
+//	    mail1.setPassword("123456"); // å¯†ç 
+//	    mail1.setSubject("This is a local mail test"); // é‚®ä»¶ä¸»é¢˜
+//	    mail1.setContent("This is a local mail test"); // é‚®ä»¶æ­£æ–‡
+//	    mail1.addAttachment( "E:\\test\\æœºå¯†ä¿¡æ¯.txt","application/msword");// æ·»åŠ é™„ä»¶
 //
 //	    mail1.start();
-//	    //ÁíÖ÷Ïß³ÌµÈ´ıÉÏÊöÏß³ÌÖ´ĞĞ½áÊøºóÔËĞĞ
+//	    //å¦ä¸»çº¿ç¨‹ç­‰å¾…ä¸Šè¿°çº¿ç¨‹æ‰§è¡Œç»“æŸåè¿è¡Œ
 //	    mail1.join();
 //
-//	    //System.out.println("SENDER-" + "Main Thread" + ":/>" + "ËùÓĞÓÊ¼şÒÑ·¢ËÍÍê±Ï£¡");
+//	    //System.out.println("SENDER-" + "Main Thread" + ":/>" + "æ‰€æœ‰é‚®ä»¶å·²å‘é€å®Œæ¯•ï¼");
 //
 //    }
 //
