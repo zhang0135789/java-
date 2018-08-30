@@ -9,7 +9,7 @@ package com.zz.utils;
 public class DecodeUtil {
 
     /**
-     * ��Unicode���н���
+     * Unicode  decode
      * @param dataStr   Unicode
      * @return
      */
@@ -25,7 +25,7 @@ public class DecodeUtil {
             } else {
                 charStr = dataStr.substring(start + 2, end);
             }
-            char letter = (char) Integer.parseInt(charStr, 16); // 16����parse�����ַ�����
+            char letter = (char) Integer.parseInt(charStr, 16); //
             buffer.append(new Character(letter).toString());
             start = end;
         }
