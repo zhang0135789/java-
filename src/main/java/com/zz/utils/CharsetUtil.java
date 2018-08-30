@@ -9,9 +9,9 @@ package com.zz.utils;
 public class CharsetUtil {
 
     /**
-     * byte 2 string£¨byte £©
+     * byte 2 stringï¼ˆbyte ï¼‰
      * @param b byte[]
-     * @param n  Î»Êı
+     * @param n ä½æ•°
      * @return
      */
     public static String byte2Str(byte b , int n){
