@@ -9,14 +9,15 @@ package com.zz.utils;
 public class CharsetUtil {
 
     /**
-     * ï¿½ï¿½byteï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½2ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+     * byte 2 string£¨byte £©
      * @param b byte[]
+     * @param n  Î»Êý
      * @return
      */
-    public static String bytes2Str(byte b){
+    public static String byte2Str(byte b , int n){
         String result ="";
         byte a = b;
-        for (int i = 0; i < 8; i++){
+        for (int i = 0; i < n; i++){
             result = (a % 2) + result;
             a=(byte)(a>>1);
         }
@@ -27,14 +28,14 @@ public class CharsetUtil {
     private static final char[] HEX_CHAR = {'0', '1', '2', '3', '4', '5',
             '6', '7', '8', '9', 'A', 'B', 'C', 'D', 'E', 'F'};
     /**
-     * ï¿½ï¿½byteï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½16ï¿½ï¿½ï¿½ï¿½ï¿½Ö·ï¿½ï¿½ï¿½
+     * byte[] 2 hex
      * @param bytes
      * @return
      */
     public static String bytes2Hex(byte[] bytes) {
         char[] buf = new char[bytes.length * 2];
         int index = 0;
-        for(byte b : bytes) { // ï¿½ï¿½ï¿½ï¿½Î»ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½×ªï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ô¿ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò»ï¿½Ä±ï¿½ï¿½ï¿½
+        for(byte b : bytes) { //
             buf[index++] = HEX_CHAR[b >>> 4 & 0xf];
             buf[index++] = HEX_CHAR[b & 0xf];
         }
@@ -42,7 +43,7 @@ public class CharsetUtil {
     }
 
     /**
-     * byte ×ªï¿½ï¿½ï¿½ï¿½  int
+     * byte 2  int
      * @param b
      * @return
      */
