@@ -24,6 +24,7 @@ public class MnemonicTest {
     public void testAddress() throws Exception {
         Mnemonic mn = new Mnemonic("");
         mn.getxPrivKey("");
+
         String address = mn.getAddress();
         System.out.println(address);
     }

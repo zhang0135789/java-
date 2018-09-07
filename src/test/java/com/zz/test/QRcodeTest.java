@@ -1,7 +1,7 @@
 package com.zz.test;
 
 import com.zz.utils.QRcodeUtil;
-import org.junit.jupiter.api.Test;
+import org.junit.Test;
 
 import javax.imageio.ImageIO;
 import java.awt.image.BufferedImage;
@@ -18,8 +18,8 @@ import java.io.IOException;
 public class QRcodeTest {
 
     @Test
-    public void Test1() throws IOException {
-        String filePath = "default/666230623579749460.jpg";
+    public void write() throws IOException {
+        String filePath = "C:\\Users\\Administrator\\Desktop\\下载\\2.png";
         File qrFile = new File(filePath);
 
         BufferedImage image = QRcodeUtil.generateQRcode("李海平");
@@ -28,8 +28,9 @@ public class QRcodeTest {
     }
 
 
-    public static void main(String[] args) throws IOException {
-        String filePath = "default/666230623579749460.jpg";
+    @Test
+    public void read() throws IOException {
+        String filePath = "C:\\Users\\Administrator\\Desktop\\下载\\1.png";
 //        String filePath2 = "签名.png";
         File qrFile = new File(filePath);
 
