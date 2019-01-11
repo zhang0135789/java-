@@ -50,11 +50,18 @@
         </dependency>
 
         <!--loge API-->
-        <!--<dependency>-->
-            <!--<groupId>org.slf4j</groupId>-->
-            <!--<artifactId>slf4j-api</artifactId>-->
-            <!--<version>${slf4j-api.version}</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-api</artifactId>
+            <version>${slf4j-api.version}</version>
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-simple</artifactId>
+            <version>${slf4j-api.version}</version>
+            <scope>test</scope>
+        </dependency>
 
         <!--Excel POI API-->
        <dependency>
@@ -74,11 +81,17 @@
             <artifactId>okhttp</artifactId>
             <version>${okhttp.version}</version>
         </dependency>
-
+        <!--JSON-->
         <dependency>
-            <groupId>one.inve</groupId>
-            <artifactId>mnemonic</artifactId>
-            <version>${mnemonic.version}</version>
+            <groupId>com.fasterxml.jackson.core</groupId>
+            <artifactId>jackson-databind</artifactId>
+            <version>2.9.7</version>
+        </dependency>
+        <!--shell链接-->
+        <dependency>
+            <groupId>com.jcraft</groupId>
+            <artifactId>jsch</artifactId>
+            <version>0.1.53</version>
         </dependency>
 
 
