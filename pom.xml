@@ -17,7 +17,7 @@
         <slf4j-api.version>1.7.25</slf4j-api.version>
         <poi.version>3.6</poi.version>
         <poi-ooxml.version>3.6</poi-ooxml.version>
-        <okhttp.version>3.2.0</okhttp.version>
+        <okhttp.version>3.8.1</okhttp.version>
         <mnemonic.version>1.0.0</mnemonic.version>
     </properties>
 
@@ -41,6 +41,36 @@
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
+
+
+
+        <!--socketIo-->
+        <dependency>
+            <groupId>io.socket</groupId>
+            <artifactId>engine.io-client</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>io.socket</groupId>
+            <artifactId>socket.io-client</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.corundumstudio.socketio</groupId>
+            <artifactId>netty-socketio</artifactId>
+            <version>1.7.13</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-resolver</artifactId>
+            <version>4.1.15.Final</version>
+        </dependency>
+        <dependency>
+            <groupId>io.netty</groupId>
+            <artifactId>netty-transport</artifactId>
+            <version>4.1.15.Final</version>
+        </dependency>
+
 
         <!--mail API-->
         <dependency>
