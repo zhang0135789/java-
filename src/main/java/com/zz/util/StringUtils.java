@@ -1,6 +1,6 @@
 package com.zz.util;
 
-import org.apache.commons.codec.binary.Base64;
+import one.inve.utils.DSA;
 import org.apache.commons.lang3.ArrayUtils;
 
 import java.io.ByteArrayOutputStream;
@@ -221,13 +221,13 @@ public class StringUtils extends org.apache.commons.lang3.StringUtils {
 		if (b == null) {
 			return null;
 		}
-		return new String(Base64.encodeBase64(b));
+		return DSA.encryptBASE64(b);
 	}
 
 	public static byte[] base64Decode(String s) {
 		if (s != null) {
 			try {
-				return Base64.decodeBase64(s.getBytes());
+				return DSA.decryptBASE64(s);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}
