@@ -19,8 +19,8 @@
 
 package com.zz.utils;
 
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.UnsupportedEncodingException;
 import java.security.MessageDigest;
@@ -32,9 +32,9 @@ import java.util.concurrent.ConcurrentHashMap;
 /**
  * Utility class to peform common String manipulation algorithms.
  */
+@Slf4j
 public class StringUtils {
 
-    private static final Logger Log = LoggerFactory.getLogger(StringUtils.class);
 
     private static final String XUEXIN_IMG_PARTURL = ".xuexin.org.cn/";// 图片替换路径
 
@@ -364,7 +364,7 @@ public class StringUtils {
         try {
             return hash(data.getBytes("UTF-8"), algorithm);
         } catch (UnsupportedEncodingException e) {
-            Log.error(e.getMessage(), e);
+            log.error(e.getMessage(), e);
         }
         return data;
     }
@@ -401,7 +401,7 @@ public class StringUtils {
                     digest = MessageDigest.getInstance(algorithm);
                     digests.put(algorithm, digest);
                 } catch (NoSuchAlgorithmException nsae) {
-                    Log.error("Failed to load the " + algorithm + " MessageDigest. "
+                    log.error("Failed to load the " + algorithm + " MessageDigest. "
                             + "Jive will be unable to function normally.", nsae);
                     return null;
                 }
@@ -514,7 +514,7 @@ public class StringUtils {
 //        try {
 //            bytes = data.getBytes("UTF-8");
 //        } catch (UnsupportedEncodingException uee) {
-//            Log.error(uee.getMessage(), uee);
+//            log.error(uee.getMessage(), uee);
 //        }
 //        return encodeBase64(bytes);
 //    }
@@ -1014,7 +1014,7 @@ public class StringUtils {
         try {
             return input.getBytes("UTF-8");
         } catch (UnsupportedEncodingException uee) {
-            Log.warn("Unable to encode string using UTF-8: " + input);
+            log.warn("Unable to encode string using UTF-8: " + input);
             return input.getBytes(); // default encoding
         }
     }
@@ -1031,7 +1031,7 @@ public class StringUtils {
             return new String(input, "UTF-8");
         } catch (UnsupportedEncodingException uee) {
             String result = new String(input); // default encoding
-            Log.warn("Unable to decode byte array using UTF-8: " + result);
+            log.warn("Unable to decode byte array using UTF-8: " + result);
             return result;
         }
     }

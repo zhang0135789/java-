@@ -10,8 +10,6 @@ import org.apache.poi.ss.usermodel.Sheet;
 import org.apache.poi.ss.usermodel.Workbook;
 import org.apache.poi.ss.util.CellRangeAddress;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 import java.io.*;
 import java.util.*;
@@ -24,7 +22,6 @@ import java.util.*;
  * @Modified By
  */
 public class ExcelUtil {
-    private static final Logger log = LoggerFactory.getLogger(ExcelUtil.class);
 
     /**
      * generate excel

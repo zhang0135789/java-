@@ -5,8 +5,7 @@ import com.swetake.util.Qrcode;
 import jp.sourceforge.qrcode.QRCodeDecoder;
 import jp.sourceforge.qrcode.data.QRCodeImage;
 import jp.sourceforge.qrcode.exception.DecodingFailedException;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import javax.imageio.ImageIO;
 import java.awt.*;
@@ -19,9 +18,9 @@ import java.io.*;
  * @Date: 下午 4:41 2018/8/9 0009
  * @Modified By
  */
+@Slf4j
 public class QRcodeUtil {
 
-    private static final Logger log = LoggerFactory.getLogger(ExcelUtil.class);
 
     /**
      * read QRcode

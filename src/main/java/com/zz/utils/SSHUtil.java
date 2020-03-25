@@ -1,8 +1,7 @@
 package com.zz.utils;
 
 import com.jcraft.jsch.*;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
+import lombok.extern.slf4j.Slf4j;
 
 import java.io.BufferedReader;
 import java.io.InputStreamReader;
@@ -12,6 +11,7 @@ import java.util.Properties;
 /**
  * ssh链接工具类
  */
+@Slf4j
 public class SSHUtil {
 
 
@@ -19,7 +19,6 @@ public class SSHUtil {
 
 	public static  int DEFAULT_SSH_PORT = 22;
 
-	private static final Logger logger = LoggerFactory.getLogger(SSHUtil.class);
 
 	/**
 	 * 密码方式登录
@@ -30,8 +29,8 @@ public class SSHUtil {
 	 * @throws Exception
 	 */
 	public static Session ssh(String ip, String username, String password) throws Exception {
-		logger.info("尝试连接到主机 {} ...",ip);
-		logger.info("username:{},password:{}",username,password);
+		log.info("尝试连接到主机 {} ...",ip);
+		log.info("username:{},password:{}",username,password);
 		JSch jsch = new JSch(); // 创建JSch对象
 		Session session = jsch.getSession(username,ip,DEFAULT_SSH_PORT); // 根据用户名，主机ip，端口获取一个Session对象
 		session.setPassword(password); // 设置密码
@@ -40,7 +39,7 @@ public class SSHUtil {
 		session.setConfig(config); // 为Session对象设置properties
 		session.setTimeout(timeout); // 设置timeout时间
 		session.connect(); // 通过Session建立链接
-		logger.info("主机 {} 连接成功!",ip);
+		log.info("主机 {} 连接成功!",ip);
 		return session;
 	}
 
@@ -95,8 +94,8 @@ public class SSHUtil {
 
 
 	public static Session sshWithFile(String ip, String username, String file, Integer port) throws JSchException {
-		logger.info("尝试连接到主机 {} ...",ip);
-		logger.info("username:{},password:{}",username,file);
+		log.info("尝试连接到主机 {} ...",ip);
+		log.info("username:{},password:{}",username,file);
 		JSch jsch = new JSch(); // 创建JSch对象
 		//加载秘钥文件
 		jsch.addIdentity(file);
@@ -106,7 +105,7 @@ public class SSHUtil {
 		session.setConfig(config); // 为Session对象设置properties
 		session.setTimeout(timeout); // 设置timeout时间
 		session.connect(); // 通过Session建立链接
-		logger.info("主机 {} 连接成功!",ip);
+		log.info("主机 {} 连接成功!",ip);
 		return session;
 	}
 }
