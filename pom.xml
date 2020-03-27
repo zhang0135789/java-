@@ -34,6 +34,12 @@
         </plugins>
     </build>
     <dependencies>
+
+        <dependency>
+            <groupId>com.redli</groupId>
+            <artifactId>eoslibrary_v2.5</artifactId>
+            <version>2.5</version>
+        </dependency>
         <!--比特币核心算法-->
         <dependency>
             <groupId>org.bitcoinj</groupId>

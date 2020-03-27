@@ -1,6 +1,7 @@
 package com.zz.util;
 
 
+import org.bitcoinj.core.Sha256Hash;
 import org.bouncycastle.jce.provider.BouncyCastleProvider;
 
 import javax.crypto.Cipher;
@@ -123,6 +124,16 @@ public class CryptoUtils {
 //        BASE64Decoder decoder = new BASE64Decoder();
 //        byte[] buffer = decoder.decodeBuffer(data);
         return buffer;
+    }
+
+
+    /**
+     * sha256hash
+     * @param input
+     * @return
+     */
+    public static byte[] sha256hash(byte[] input) {
+        return Sha256Hash.hash(input);
     }
 
 

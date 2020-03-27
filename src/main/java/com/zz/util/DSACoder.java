@@ -1,11 +1,9 @@
 package com.zz.util;
 
-import java.security.KeyPair;
-import java.security.KeyPairGenerator;
-import java.security.NoSuchAlgorithmException;
-import java.security.Signature;
+import java.security.*;
 import java.security.interfaces.DSAPrivateKey;
 import java.security.interfaces.DSAPublicKey;
+import java.security.spec.X509EncodedKeySpec;
 
 /**
  * @Author: zz
@@ -18,6 +16,9 @@ public class DSACoder {
 
     public static void main(String[] args) throws Exception {
         String data = "跳梁小豆tlxd666";
+
+
+
 
         //创建秘钥生成器
         KeyPairGenerator kpg = KeyPairGenerator.getInstance("DSA");

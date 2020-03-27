@@ -23,6 +23,14 @@ public class ECDSACoder {
 //    private final static String privateKey2 = "3041020100301306072a8648ce3d020106082a8648ce3d03010704273025020101042011353b6b2ee5975cf2c7efb836329a07794be70b58d64efc23e7311fb4352501";
 
     public static void main(String[] args) throws Exception {
+
+        String pri = "5KgE3ispuNLE2hqFiEnTCHujPpdGEMT7GkoBBqAkC1cZQpbr6ej";
+        String pub = "5XSkxd9rQEjRpwQnMJMpcx9qfo7gMTJSbcdDt366uZVHWro7Ak";
+
+//        PrivateKey privatekey = getPrivateKey(pri);
+        PublicKey pubKey = getPublicKey(pub);
+
+
 //        加签验签
         KeyPair keyPair = getKeyPair();
         PrivateKey privateKey = keyPair.getPrivate();
